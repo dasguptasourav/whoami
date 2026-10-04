@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourav Dasgupta — Data &amp; Analytics Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171B26; --ink-soft:#4A4F5C; --paper:#F1EFE6; --paper-raised:#E9E5D8;
+    --brass:#A9762C; --brass-deep:#8A5F20; --teal:#1F6F6F; --line:#CFC8B4; --line-soft:#DEDACB;
+    --serif:'Fraunces',Georgia,serif; --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif; --mono:'IBM Plex Mono','Courier New',monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:80px;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  a{color:var(--brass-deep);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* Header */
+  header{position:sticky; top:0; z-index:20; background:rgba(241,239,230,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .headbar{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
+  .wordmark{font-family:var(--serif); font-weight:600; font-size:1.1rem;}
+  .wordmark span{color:var(--brass-deep);}
+  nav{display:flex; align-items:center; gap:20px;}
+  nav a{color:var(--ink-soft); text-decoration:none; font-size:0.88rem; border-bottom:1px solid transparent; padding-bottom:2px; white-space:nowrap;}
+  nav a:hover{color:var(--ink); border-color:var(--brass);}
+  nav a.projects-link{
+    color:var(--brass-deep); font-weight:600; border:1px solid var(--brass); border-radius:20px;
+    padding:6px 14px; margin-left:4px;
+  }
+  nav a.projects-link:hover{background:var(--brass); color:#fff;}
+  #nav-scroll{display:flex; gap:18px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;}
+  #nav-scroll::-webkit-scrollbar{display:none;}
+  @media (max-width:980px){
+    .headbar{align-items:stretch; flex-direction:column; gap:10px; padding:14px 0;}
+  }
+
+  /* Hero */
+  .hero{padding:92px 0 68px;}
+  .hero-greeting{font-family:var(--serif); font-weight:500; font-size:clamp(1.9rem,3.6vw,2.9rem); color:var(--ink); margin:0 0 14px; line-height:1.15;}
+  .hero-greeting .accent-name{color:var(--brass-deep); font-style:italic;}
+  .hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,4.6vw,3.5rem); line-height:1.12; max-width:22ch; margin:0 0 26px; letter-spacing:-0.01em;}
+  .hero .lede{max-width:64ch; font-size:1.1rem; color:var(--ink-soft); margin:0 0 30px;}
+  .credentials{display:flex; flex-wrap:wrap; gap:12px 28px; font-family:var(--mono); font-size:0.88rem; font-weight:500; color:var(--ink); border-top:1px solid var(--line); padding-top:18px; max-width:78ch;}
+  .credentials b{color:var(--brass-deep); font-weight:700;}
+  .credentials .cred-line{flex-basis:100%;}
+  .hero-cta{margin-top:26px; display:flex; flex-wrap:wrap; gap:12px 26px; align-items:center;}
+  .hero-cta a.primary{font-size:0.98rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--brass); padding-bottom:2px;}
+  .hero-cta a.primary:hover{color:var(--brass-deep);}
+  .hero-cta a.button{
+    font-family:var(--mono); font-size:0.85rem; color:var(--brass-deep); border:1px solid var(--brass); border-radius:20px;
+    padding:8px 16px; text-decoration:none;
+  }
+  .hero-cta a.button:hover{background:var(--brass); color:#fff;}
+
+  /* Section shell */
+  section.block{padding:74px 0; border-top:1px solid var(--line);}
+  .block-head{max-width:70ch; margin-bottom:36px;}
+  .block-head h2{font-family:var(--serif); font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin:0 0 12px;}
+  .block-head p{color:var(--ink-soft); font-size:1rem; margin:0;}
+
+  /* What I bring to the table — side-by-side box with icon badges */
+  .tile-grid{
+    display:grid; grid-template-columns:repeat(5, 1fr);
+    gap:8px; margin:8px -18px 0;
+  }
+  @media (max-width:900px){ .tile-grid{grid-template-columns:repeat(3, 1fr);} }
+  @media (max-width:640px){ .tile-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:440px){ .tile-grid{grid-template-columns:1fr;} }
+  .tile{
+    background:var(--paper); padding:24px 18px 22px; border-radius:10px; display:flex; flex-direction:column; gap:14px;
+    text-decoration:none; color:var(--ink); transition:background 0.2s ease;
+  }
+  .tile:hover{background:var(--paper-raised);}
+  .tile-icon{
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--paper-raised); border:1.5px solid var(--tile-accent, var(--brass));
+    color:var(--tile-accent, var(--brass)); transition:background 0.2s ease, color 0.2s ease;
+  }
+  .tile:hover .tile-icon{background:var(--tile-accent, var(--brass)); color:#fff;}
+  .tile-icon svg{width:20px; height:20px;}
+  .tile .tile-title{font-family:var(--serif); font-weight:600; font-size:1.02rem; color:var(--ink); transition:color 0.15s ease; line-height:1.25;}
+  .tile:hover .tile-title{color:var(--tile-accent, var(--brass-deep));}
+  .tile .tile-blurb{font-size:0.82rem; color:var(--ink-soft); flex-grow:1; line-height:1.45;}
+
+  /* Pillar sections (reused) */
+  .sec-head{display:grid; grid-template-columns:132px 1fr; gap:24px; margin-bottom:38px;}
+  @media (max-width:640px){ .sec-head{grid-template-columns:1fr;} }
+  .sec-num{display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding-top:0;}
+  .sec-num .sec-icon{
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--paper-raised); border:1.5px solid var(--sec-accent, var(--brass)); color:var(--sec-accent, var(--brass));
+  }
+  .sec-num .sec-icon svg{width:20px; height:20px;}
+  .sec-num .sec-label{font-family:var(--serif); font-weight:600; font-size:1.02rem; color:var(--ink); line-height:1.25;}
+  .sec-head h2{font-family:var(--serif); font-weight:500; font-size:clamp(1.5rem,2.6vw,2.1rem); margin:0 0 10px; max-width:24ch;}
+  .sec-head .kicker{color:var(--ink-soft); font-size:0.95rem; max-width:58ch; margin:0;}
+  .sec-body{display:grid; grid-template-columns:132px 1fr; gap:24px;}
+  @media (max-width:640px){ .sec-body{grid-template-columns:1fr;} }
+  .sec-body > .filler{display:none;}
+  @media (min-width:640px){ .sec-body > .filler{display:block;} }
+  .sec-content > p{max-width:68ch; margin:0 0 18px;}
+  .sec-content h3{font-family:var(--serif); font-weight:500; font-size:1.15rem; margin:32px 0 10px; color:var(--ink);}
+  .pull-quote{margin:30px 0 0; padding:18px 22px; border-left:3px solid var(--teal); background:var(--paper-raised); font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--ink); max-width:64ch;}
+
+  .case-list{list-style:none; margin:22px 0 0; padding:0; display:grid; gap:14px;}
+  .case-list li{border:1px solid var(--line); background:var(--paper-raised); padding:14px 18px; border-radius:2px; display:grid; grid-template-columns:170px 1fr; gap:14px;}
+  @media (max-width:560px){ .case-list li{grid-template-columns:1fr; gap:4px;} }
+  .case-list .label{font-family:var(--mono); font-size:0.82rem; color:var(--brass-deep); font-weight:500; padding-top:2px;}
+  .case-list .desc{font-size:0.96rem; color:var(--ink);}
+
+  .diagram-frame{margin-top:38px; border:1px solid var(--line); background:#F8F6EF; padding:20px 12px 8px;}
+  .diagram-frame svg{width:100%; height:auto; display:block;}
+  .ci-frame{margin-top:30px; border:1px solid var(--line); background:#F8F6EF; padding:22px 20px 8px;}
+  .ci-title{font-family:var(--serif); font-weight:600; font-size:1.1rem; margin-bottom:18px;}
+  .ci-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  @media (max-width:900px){ .ci-grid{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:640px){ .ci-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:440px){ .ci-grid{grid-template-columns:1fr;} }
+  .ci-col{display:flex; flex-direction:column; gap:8px;}
+  .ci-head{font-family:var(--mono); font-size:0.78rem; font-weight:500; color:var(--ci-accent); border-bottom:2px solid var(--ci-accent); padding-bottom:6px; margin-bottom:4px;}
+  .ci-prov{margin-top:22px; border:1px dashed var(--line); border-radius:10px; padding:14px 14px 16px; background:var(--paper);}
+  .ci-prov-label{font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); margin-bottom:10px;}
+  .ci-src-for{display:none; font-family:var(--mono); font-size:0.7rem; color:var(--ci-accent);}
+  @media (max-width:900px){ .ci-src-for{display:block;} }
+  .ci-src{font-family:var(--mono); font-size:0.8rem; text-align:center; border:1px solid var(--ci-accent); color:var(--ink); border-radius:20px; padding:6px 10px; background:#fff;}
+  .ci-insight{margin-top:20px; padding-top:16px; border-top:1px dashed var(--line-soft);}
+  .ci-insight-lede{margin:0 0 12px; font-size:0.95rem; color:var(--ink); max-width:72ch;}
+  .ci-points{margin:0; padding-left:20px; display:grid; gap:10px; max-width:76ch;}
+  .ci-points li{font-size:0.9rem; color:var(--ink-soft); line-height:1.55;}
+  .ci-points b{color:var(--ink); font-weight:600;}
+  .ci-sources{margin:14px 0 8px; font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft);}
+  .ci-chip{font-size:0.84rem;}
+  .ci-chip{border:1px solid var(--line); background:var(--paper); border-left:3px solid var(--ci-accent); border-radius:4px; padding:8px 12px; font-size:0.88rem; color:var(--ink);}
+  .diagram-caption{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); padding:12px 6px 4px; border-top:1px dashed var(--line-soft); margin-top:10px;}
+
+  .stat-row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:34px;}
+  @media (max-width:760px){ .stat-row{grid-template-columns:1fr;} }
+  .stat-cell{background:var(--paper); padding:26px 24px;}
+  .stat-cell .num{font-family:var(--serif); font-weight:600; color:var(--brass-deep); font-size:2.1rem; line-height:1; margin-bottom:6px;}
+  .stat-cell .basis{font-size:0.86rem; color:var(--ink-soft); margin-bottom:14px;}
+  .stat-cell .goal{font-size:0.92rem; border-top:1px solid var(--line-soft); padding-top:12px;}
+  .stat-cell .goal b{color:var(--teal); font-weight:600;}
+
+  .timeline{margin-top:36px; position:relative; padding-left:26px;}
+  .timeline::before{content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:26px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--paper); border:2px solid var(--teal);}
+  .tl-item .tl-head{font-weight:600; margin-bottom:4px;}
+  .tl-item .tl-body{color:var(--ink-soft); font-size:0.95rem; max-width:60ch;}
+
+  /* Experience timeline (roles) */
+  .role-timeline{margin-top:8px; position:relative; padding-left:30px;}
+  .role-timeline::before{content:''; position:absolute; left:6px; top:8px; bottom:8px; width:1px; background:var(--line);}
+  .role-item{position:relative; padding-bottom:36px;}
+  .role-item:last-child{padding-bottom:0;}
+  .role-item::before{content:''; position:absolute; left:-30px; top:6px; width:11px; height:11px; border-radius:50%; background:var(--brass); border:2px solid var(--paper); box-shadow:0 0 0 1px var(--brass);}
+  .role-title{font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:2px;}
+  .role-meta{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); margin-bottom:10px;}
+  .role-item ul{margin:0; padding-left:20px;}
+  .role-item li{font-size:0.95rem; color:var(--ink); margin-bottom:4px; max-width:66ch;}
+
+  .cred-columns{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:44px; padding-top:32px; border-top:1px dashed var(--line-soft);}
+  @media (max-width:700px){ .cred-columns{grid-template-columns:1fr;} }
+  .cred-columns h4{font-family:var(--mono); font-size:0.8rem; color:var(--teal); margin:0 0 12px;}
+  .cred-columns ul{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+  .cred-columns li{font-size:0.92rem; color:var(--ink-soft);}
+
+  /* By the numbers */
+  .num-grid{display:grid; grid-template-columns:1fr 1fr 1fr; column-gap:36px; row-gap:36px; margin-top:8px;}
+  @media (max-width:760px){ .num-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .num-grid{grid-template-columns:1fr;} }
+  .num-cell{border-top:2px solid var(--brass); padding-top:16px;}
+  .num-cell .num{font-family:var(--serif); font-weight:600; color:var(--brass-deep); font-size:2.4rem; line-height:1; margin-bottom:8px;}
+  .num-cell .label{font-size:0.92rem; color:var(--ink-soft);}
+
+  /* Tech stack */
+  .stack-grid{display:flex; flex-wrap:wrap; gap:16px; margin-top:10px;}
+  .stack-groups{display:grid; grid-template-columns:1fr 1fr; gap:28px 40px; margin-top:10px;}
+  @media (max-width:760px){ .stack-groups{grid-template-columns:1fr;} }
+  .stack-group-head{font-family:var(--mono); font-size:0.8rem; color:var(--sg-accent); border-bottom:2px solid var(--sg-accent); padding-bottom:6px; margin-bottom:14px;}
+  .stack-group .stack-grid{gap:8px; margin-top:0;}
+  .stack-badge{display:flex; align-items:center; gap:10px; border:1px solid var(--line); border-left:3px solid var(--sg-accent, var(--brass)); background:var(--paper-raised); padding:8px 14px; border-radius:4px;}
+  .stack-badge .icon{width:22px; height:22px; flex-shrink:0;}
+  .stack-badge .name{font-family:var(--mono); font-size:0.84rem; color:var(--ink);}
+
+  /* Currently building */
+  .build-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:10px;}
+  @media (max-width:860px){ .build-grid{grid-template-columns:1fr;} }
+  .build-card{border:1px solid var(--line); background:var(--paper-raised); padding:24px; display:flex; flex-direction:column; gap:10px;}
+  .build-card .status{font-family:var(--mono); font-size:0.72rem; color:var(--teal); border:1px solid var(--teal); border-radius:20px; padding:3px 10px; width:fit-content;}
+  .build-card .status-search{margin-top:auto; color:var(--brass-deep); border-color:var(--brass);}
+  .build-card h3{font-family:var(--serif); font-weight:500; font-size:1.12rem; margin:0;}
+  .build-card p{font-size:0.92rem; color:var(--ink); margin:0;}
+  .build-link{margin-top:auto; padding-top:6px; font-family:var(--mono); font-size:0.82rem; color:var(--brass-deep); text-decoration:none; border-bottom:1px solid var(--brass); width:fit-content;}
+  .build-link:hover{color:var(--ink);}
+
+  /* Interests */
+  .interest-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px 40px; margin-top:10px;}
+  @media (max-width:700px){ .interest-grid{grid-template-columns:1fr;} }
+  .interest-item{padding:14px 0; border-bottom:1px dotted var(--line);}
+  .interest-item .i-title{font-family:var(--serif); font-weight:500; font-size:1.02rem; margin-bottom:4px;}
+  .interest-item p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+
+  /* Recommendations */
+  .testimonial-grid{display:grid; grid-template-columns:1fr 1fr; column-gap:48px; row-gap:34px; margin-top:8px;}
+  @media (max-width:800px){ .testimonial-grid{grid-template-columns:1fr;} }
+  .testimonial{border-left:3px solid var(--teal); padding:2px 0 2px 22px; display:flex; flex-direction:column; gap:12px;}
+  .testimonial blockquote{margin:0; font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--ink); line-height:1.55;}
+  .testimonial .t-attr{font-size:0.85rem; color:var(--ink-soft); border-top:1px dashed var(--line-soft); padding-top:12px;}
+  .testimonial .t-attr b{color:var(--ink); font-weight:600;}
+  .testimonial .t-link{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--brass);}
+  .testimonial .t-link:hover{color:var(--brass-deep);}
+  .testimonial .t-link::after{content:" \2197"; font-size:0.8em; color:var(--brass-deep);}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line); padding:56px 0 48px;}
+  .cta-line{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:14px;}
+  .cta-line a.mail{font-family:var(--serif); font-size:1.2rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--brass);}
+  .cta-line a.mail:hover{color:var(--brass-deep);}
+  .cta-line .fine{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft);}
+  .foot-links{margin-top:18px; display:flex; gap:22px; font-size:0.9rem;}
+  .contact-row{display:flex; align-items:center; gap:36px;}
+  .contact-photo{width:160px; height:160px; border-radius:50%; object-fit:cover; flex-shrink:0; border:3px solid var(--paper-raised); box-shadow:0 0 0 1px var(--brass);}
+  @media (max-width:640px){ .contact-row{flex-direction:column; align-items:flex-start; gap:24px;} .contact-photo{width:120px; height:120px;} }
+  .case-grid{display:grid; gap:16px; padding-bottom:60px;}
+  details.case{
+    border:1px solid var(--line); background:var(--paper-raised); border-radius:2px; overflow:hidden;
+  }
+  details.case[open]{background:#F8F6EF;}
+  summary.case-head{
+    list-style:none; cursor:pointer; padding:20px 24px; display:grid;
+    grid-template-columns:1fr auto auto; gap:16px; align-items:center;
+  }
+  summary.case-head::-webkit-details-marker{display:none;}
+  @media (max-width:700px){ summary.case-head{grid-template-columns:1fr; gap:8px;} }
+  .case-title{font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--ink);}
+  .case-meta{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft);}
+  .case-ask{font-size:0.95rem; color:var(--ink-soft); margin-top:4px; max-width:60ch;}
+  .case-value{
+    font-family:var(--mono); font-size:0.85rem; color:var(--brass-deep); border:1px solid var(--brass); border-radius:20px;
+    padding:5px 14px; white-space:nowrap; justify-self:end;
+  }
+  .case-chevron{
+    font-family:var(--mono); color:var(--ink-soft); font-size:1rem; transition:transform 0.2s ease; justify-self:end;
+  }
+  details.case[open] .case-chevron{transform:rotate(180deg);}
+  .case-body{padding:0 24px 26px; border-top:1px dashed var(--line-soft);}
+  .case-body h4{font-family:var(--mono); font-size:0.76rem; text-transform:none; color:var(--teal); margin:20px 0 6px; letter-spacing:0.02em;}
+  .case-body p, .case-body li{font-size:0.96rem; color:var(--ink); max-width:66ch;}
+  .case-body ul{margin:6px 0 0; padding-left:20px;}
+
+  .more-heading{font-family:var(--serif); font-weight:500; font-size:1.4rem; margin:8px 0 20px;}
+  .more-list{list-style:none; margin:0 0 80px; padding:0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .more-list li{background:var(--paper); padding:16px 20px; display:grid; grid-template-columns:300px 150px 1fr; gap:14px; align-items:start;}
+  @media (max-width:700px){ .more-list li{grid-template-columns:1fr;} }
+  .more-list .client{font-weight:600; font-size:0.96rem;}
+  .more-list .dates{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft);}
+  .more-list .scope{font-size:0.92rem; color:var(--ink-soft);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap headbar">
+    <div class="wordmark">Sourav <span>Dasgupta</span></div>
+    <nav>
+      <div id="nav-scroll">
+        <a href="#value">Value Proposition</a>
+        <a href="#projects">Success Stories</a>
+        <a href="#experience">Experience</a>
+        <a href="#building">Current Projects</a>
+        <a href="#recommendations">Recommendations</a>
+      </div>
+      <a href="#contact" class="projects-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap" id="about">
+  <div class="hero-greeting">G&rsquo;day, I'm <span class="accent-name">Sourav</span>.</div>
+  <h1>I build the analytics capabilities, teams, products and services that help companies better understand their business.</h1>
+  <p class="lede">Over twenty years across Consulting (Accenture, Capgemini), Financial Services (Westpac, Humm) and Technology (Atlassian). I have worked across the whole data chain, the end-to-end architecture from ingestion through to self-serve and automation, and I add the most value towards the right of it, where data turns into power.</p>
+</section>
+
+<!-- WHAT I BRING TO THE TABLE -->
+<section class="block" id="value" style="padding-top:56px;">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>My Value Proposition</h2>
+      <p>Each one below is a full section further down the page — this is the map.</p>
+    </div>
+    <div class="tile-grid">
+      <a class="tile" href="#models" style="--tile-accent:#1F6F6F;">
+        <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+        <div class="tile-title">Decision Intelligence</div>
+        <div class="tile-blurb">Predictive models and ecosystem intelligence that shape acquisition and portfolio calls.</div>
+      </a>
+      <a class="tile" href="#revenue" style="--tile-accent:#A9762C;">
+        <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,14 21,5"/><circle cx="21" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <div class="tile-title">Commercial &amp; Business Performance Insights</div>
+        <div class="tile-blurb">I explain exactly why revenue moved, down to the seat and the driver.</div>
+      </a>
+      <a class="tile" href="#foundations" style="--tile-accent:#1F6F6F;">
+        <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8 12 13 3 8 Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg></div>
+        <div class="tile-title">Analytics Foundations</div>
+        <div class="tile-blurb">Governed metrics, the team that builds them and the mandate to make them stick.</div>
+      </a>
+      <a class="tile" href="#coo" style="--tile-accent:#A9762C;">
+        <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
+        <div class="tile-title">Fractional COO</div>
+        <div class="tile-blurb">Operating leadership for a startup preparing and running its capital raise.</div>
+      </a>
+      <a class="tile" href="#ai" style="--tile-accent:#1F6F6F;">
+        <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+        <div class="tile-title">AI Strategy</div>
+        <div class="tile-blurb">AI strategy grounded in trusted data, backed by hands-on agentic builds.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — DECISION INTELLIGENCE -->
+<section class="block" id="models">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="--sec-accent:#1F6F6F;">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+        <div class="sec-label">Decision Intelligence</div>
+      </div>
+      <div>
+        <h2>Decision intelligence: the models and signals behind big calls</h2>
+        <p class="kicker">Predictive models and external intelligence that shape what happens next: where to spend, and who to acquire.</p>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="filler"></div>
+      <div class="sec-content">
+        <h3>Customer lifetime value, by product</h3>
+        <p>Built a set of gradient boosting regressor models to predict customer lifetime value, split by product line rather than one model for everything: three core products shared a model, since their usage patterns generalised, while each of the other products needed its own. Features spanned product usage, account usage, the trend of both over time, pricing tier and firmographics, plus expansion and contraction signal. The main use case was paid search: feeding predicted lifetime value back into bid optimisation, rather than buying acquisition on last-click conversion alone.</p>
+        <div class="diagram-frame" style="margin-top:24px;">
+          <svg viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="clvTitle clvDesc">
+            <title id="clvTitle">Customer lifetime value model</title>
+            <desc id="clvDesc">Six feature groups (product usage, account usage, usage trends over time, expansion and contraction, pricing tier, firmographics) feed a set of gradient boosting regressor models split by product: one shared model for Products A, B and C, and separate models for Product D, Product E and other products. The models output predicted lifetime value per account, which feeds paid search bid optimisation.</desc>
+            <defs><marker id="clvArrT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F6F6F"/></marker><marker id="clvArrB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A9762C"/></marker></defs>
+            <text x="20" y="22" text-anchor="start" font-family="IBM Plex Mono" font-size="10.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">FEATURES</text>
+            <text x="330" y="22" text-anchor="start" font-family="IBM Plex Mono" font-size="10.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">MODELS: GRADIENT BOOSTING REGRESSORS</text>
+            <text x="640" y="22" text-anchor="start" font-family="IBM Plex Mono" font-size="10.5" font-weight="400" fill="#8A5F20" letter-spacing="0.4">OUTPUT</text>
+            <text x="830" y="22" text-anchor="start" font-family="IBM Plex Mono" font-size="10.5" font-weight="400" fill="#8A5F20" letter-spacing="0.4">USE CASE</text>
+            <rect x="20" y="40" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="61" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Product usage</text>
+            <text x="36" y="79" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Activity in the product</text>
+            <line x1="260" y1="65.0" x2="290" y2="65.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="20" y="104" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="125" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Account usage</text>
+            <text x="36" y="143" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Activity across the account</text>
+            <line x1="260" y1="129.0" x2="290" y2="129.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="20" y="168" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="189" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Usage trends</text>
+            <text x="36" y="207" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Both, tracked over time</text>
+            <line x1="260" y1="193.0" x2="290" y2="193.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="20" y="232" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="253" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Expansion &amp; contraction</text>
+            <text x="36" y="271" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Account growth and decline</text>
+            <line x1="260" y1="257.0" x2="290" y2="257.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="20" y="296" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="317" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Pricing tier</text>
+            <text x="36" y="335" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Standard, Premium, Enterprise</text>
+            <line x1="260" y1="321.0" x2="290" y2="321.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="20" y="360" width="240" height="50" rx="6" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.2"/>
+            <text x="36" y="381" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Firmographics</text>
+            <text x="36" y="399" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Company profile data</text>
+            <line x1="260" y1="385.0" x2="290" y2="385.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <line x1="290" y1="65.0" x2="290" y2="385.0" stroke="#1F6F6F" stroke-width="1.2"/>
+            <rect x="318" y="44.0" width="268" height="362" rx="10" fill="none" stroke="#4A4F5C" stroke-width="1" stroke-dasharray="5 4"/>
+            <line x1="290" y1="225.0" x2="328" y2="93.0" stroke="#1F6F6F" stroke-width="1.2" marker-end="url(#clvArrT)"/>
+            <rect x="330" y="58.0" width="244" height="70" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.2"/>
+            <rect x="530" y="102.0" width="36" height="18" rx="9" fill="none" stroke="#1F6F6F" stroke-width="1"/>
+            <text x="548" y="115.0" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">GBR</text>
+            <text x="344" y="88.0" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Products A · B · C</text>
+            <text x="344" y="108.0" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">One shared model</text>
+            <line x1="574" y1="93.0" x2="604" y2="93.0" stroke="#A9762C" stroke-width="1.2"/>
+            <line x1="290" y1="225.0" x2="328" y2="181.0" stroke="#1F6F6F" stroke-width="1.2" marker-end="url(#clvArrT)"/>
+            <rect x="330" y="146.0" width="244" height="70" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.2"/>
+            <rect x="530" y="190.0" width="36" height="18" rx="9" fill="none" stroke="#1F6F6F" stroke-width="1"/>
+            <text x="548" y="203.0" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">GBR</text>
+            <text x="344" y="176.0" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Product D</text>
+            <text x="344" y="196.0" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Own model</text>
+            <line x1="574" y1="181.0" x2="604" y2="181.0" stroke="#A9762C" stroke-width="1.2"/>
+            <line x1="290" y1="225.0" x2="328" y2="269.0" stroke="#1F6F6F" stroke-width="1.2" marker-end="url(#clvArrT)"/>
+            <rect x="330" y="234.0" width="244" height="70" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.2"/>
+            <rect x="530" y="278.0" width="36" height="18" rx="9" fill="none" stroke="#1F6F6F" stroke-width="1"/>
+            <text x="548" y="291.0" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">GBR</text>
+            <text x="344" y="264.0" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Product E</text>
+            <text x="344" y="284.0" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Own model</text>
+            <line x1="574" y1="269.0" x2="604" y2="269.0" stroke="#A9762C" stroke-width="1.2"/>
+            <line x1="290" y1="225.0" x2="328" y2="357.0" stroke="#1F6F6F" stroke-width="1.2" marker-end="url(#clvArrT)"/>
+            <rect x="330" y="322.0" width="244" height="70" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.2"/>
+            <rect x="530" y="366.0" width="36" height="18" rx="9" fill="none" stroke="#1F6F6F" stroke-width="1"/>
+            <text x="548" y="379.0" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" font-weight="400" fill="#1F6F6F" letter-spacing="0.4">GBR</text>
+            <text x="344" y="352.0" text-anchor="start" font-family="IBM Plex Sans" font-size="13" font-weight="600" fill="#171B26" letter-spacing="0.4">Other products</text>
+            <text x="344" y="372.0" text-anchor="start" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">One model each</text>
+            <line x1="574" y1="357.0" x2="604" y2="357.0" stroke="#A9762C" stroke-width="1.2"/>
+            <line x1="604" y1="93.0" x2="604" y2="357.0" stroke="#A9762C" stroke-width="1.2"/>
+            <line x1="604" y1="225.0" x2="638" y2="225.0" stroke="#A9762C" stroke-width="1.4" marker-end="url(#clvArrB)"/>
+            <rect x="640" y="165.0" width="150" height="120" rx="8" fill="#FBF3E4" stroke="#A9762C" stroke-width="1.6"/>
+            <text x="715" y="207.0" text-anchor="middle" font-family="Fraunces" font-size="16" font-weight="600" fill="#8A5F20" letter-spacing="0.4">Predicted</text>
+            <text x="715" y="227.0" text-anchor="middle" font-family="Fraunces" font-size="16" font-weight="600" fill="#8A5F20" letter-spacing="0.4">lifetime value</text>
+            <text x="715" y="251.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">per account</text>
+            <line x1="790" y1="225.0" x2="828" y2="225.0" stroke="#A9762C" stroke-width="1.4" marker-end="url(#clvArrB)"/>
+            <rect x="830" y="145.0" width="160" height="160" rx="8" fill="#FFFFFF" stroke="#8A5F20" stroke-width="1.4"/>
+            <text x="910" y="179.0" text-anchor="middle" font-family="Fraunces" font-size="15" font-weight="600" fill="#171B26" letter-spacing="0.4">Paid search</text>
+            <text x="910" y="199.0" text-anchor="middle" font-family="Fraunces" font-size="15" font-weight="600" fill="#171B26" letter-spacing="0.4">optimisation</text>
+            <text x="910" y="231.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">Bid on predicted value,</text>
+            <text x="910" y="248.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">not last-click</text>
+            <text x="910" y="265.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" font-weight="400" fill="#4A4F5C" letter-spacing="0.4">conversion alone</text>
+            </svg>
+          <div class="diagram-caption">Six feature groups feed gradient boosting regressors split by product line. Predicted lifetime value per account then sets how much each paid search click is worth.</div>
+        </div>
+        <h3>Ecosystem intelligence, for Corporate Development</h3>
+        <p>Ran a competitive intelligence capability covering sentiment, funding, financials, product reviews, page clicks, app downloads and social presence. The more distinctive signal was tracking the company's own product links being pasted into other tools inside a customer's ecosystem: a proxy for which other apps were actually live there, and how that adoption trended over time. That "ecosystem intelligence" became a quarterly report to the CEO, with Corporate Development as the standing stakeholder: it surfaced candidate companies through share-of-mind trends, and when the CEO wanted a specific read on a competitor's growth, strategy or funding, the same dataset had enough depth to answer it directly, supporting acquisition targeting up to $500M.</p>
+        <div class="ci-frame">
+          <div class="ci-title">Competitive intelligence metrics</div>
+          <div class="ci-grid">
+            <div class="ci-col" style="--ci-accent:#1F6F6F;">
+              <div class="ci-head">Usage based</div>
+              <div class="ci-chip"># Links</div>
+              <div class="ci-chip"># Instances</div>
+              <div class="ci-chip"># Links per instance</div>
+            </div>
+            <div class="ci-col" style="--ci-accent:#A9762C;">
+              <div class="ci-head">Sentiment</div>
+              <div class="ci-chip"># Tweets</div>
+              <div class="ci-chip"># Mentions</div>
+              <div class="ci-chip"># Upvotes</div>
+              <div class="ci-chip"># Comments</div>
+              <div class="ci-chip"># Shares</div>
+            </div>
+            <div class="ci-col" style="--ci-accent:#1F6F6F;">
+              <div class="ci-head">Traffic</div>
+              <div class="ci-chip">Desktop traffic</div>
+              <div class="ci-chip">Mobile traffic</div>
+              <div class="ci-chip"># Mobile downloads</div>
+              <div class="ci-chip"># Clicks</div>
+              <div class="ci-chip">Signup volume</div>
+              <div class="ci-chip"># Visits</div>
+              <div class="ci-chip">Unique visitors</div>
+            </div>
+            <div class="ci-col" style="--ci-accent:#A9762C;">
+              <div class="ci-head">Product</div>
+              <div class="ci-chip">MAU / DAU</div>
+              <div class="ci-chip">Churn rate</div>
+              <div class="ci-chip">Net revenue rate</div>
+            </div>
+            <div class="ci-col" style="--ci-accent:#1F6F6F;">
+              <div class="ci-head">Funding</div>
+              <div class="ci-chip">Last funding round</div>
+              <div class="ci-chip">Fund amount</div>
+              <div class="ci-chip">Valuation</div>
+              <div class="ci-chip">Stage</div>
+              <div class="ci-chip">Lead investor</div>
+            </div>
+          </div>
+          <div class="ci-prov">
+            <div class="ci-prov-label">Data provisioning</div>
+            <div class="ci-grid">
+              <div class="ci-col" style="--ci-accent:#1F6F6F;"><span class="ci-src-for">Usage based</span><div class="ci-src">Link paste data</div></div>
+              <div class="ci-col" style="--ci-accent:#A9762C;"><span class="ci-src-for">Sentiment</span><div class="ci-src">Product Hunt</div></div>
+              <div class="ci-col" style="--ci-accent:#1F6F6F;"><span class="ci-src-for">Traffic</span><div class="ci-src">SimilarWeb</div></div>
+              <div class="ci-col" style="--ci-accent:#A9762C;"><span class="ci-src-for">Product</span><div class="ci-src">PitchBook</div></div>
+              <div class="ci-col" style="--ci-accent:#1F6F6F;"><span class="ci-src-for">Funding</span><div class="ci-src">PitchBook</div><div class="ci-src">Crunchbase</div></div>
+            </div>
+          </div>
+          <div class="ci-insight">
+            <p class="ci-insight-lede">Read on its own, each metric is a snapshot. Tracked over time and read against one another, they show how fast a competitor is growing and where it is likely heading.</p>
+            <ol class="ci-points">
+              <li><b>Traffic moves before revenue does.</b> Similarweb positions web traffic as a real-time view of demand that surfaces performance weeks before it is reported; in one of its examples, pricing-page visits up 19% quarter on quarter preceded an earnings beat. Rising visits, signups and downloads together point to accelerating acquisition well before a competitor discloses ARR.</li>
+              <li><b>Funding cadence and investor quality signal trajectory.</b> PitchBook&rsquo;s VC Exit Predictor scores companies on fundraising frequency, round size, investor track record, headcount and news coverage, and reports around 75% accuracy across 12,000 companies. Read alongside traffic, a fresh round on rising engagement suggests expansion; a long gap on flat traffic suggests a company that may be open to acquisition.</li>
+              <li><b>No single signal is enough.</b> Crunchbase argues that relying on one or two inputs leaves &ldquo;structural blind spots&rdquo;, so it correlates funding velocity, headcount, and news velocity and sentiment. The same logic separates hype from adoption here: buzz rising while usage and retention stay flat tells a very different story from all three rising together.</li>
+            </ol>
+            <div class="ci-sources">Sources: <a href="https://www.similarweb.com/blog/investor/asset-research/what-is-alternative-data/">Similarweb</a> &middot; <a href="https://pitchbook.com/help/understanding-vc-exit-predictor">PitchBook</a> &middot; <a href="https://about.crunchbase.com/guide/predictive-intelligence">Crunchbase</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — COMMERCIAL & BUSINESS PERFORMANCE INSIGHTS -->
+<section class="block" id="revenue">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="--sec-accent:#A9762C;">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,17 9,11 13,14 21,5"/><circle cx="21" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <div class="sec-label">Commercial &amp; Business Performance Insights</div>
+      </div>
+      <div>
+        <h2>Commercial &amp; business performance insights</h2>
+        <p class="kicker">Most teams can tell leadership that ARR beat or missed forecast. I build the models that show exactly which lever moved, by how much, and what to do about it &mdash; down to the seat, the segment and the driver.</p>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="filler"></div>
+      <div class="sec-content">
+        <p>The starting point is always the same question: what actually happened to revenue this period, and why. That means decomposing closing ARR back to its seat-level drivers &mdash; new logos landed, cross-sell, expansion, contraction, reactivation and churn &mdash; and pricing it correctly across the tiers that carry the business. Below is the bridge I use to hold that decomposition together, distinguishing sales-led motion from product-led motion.</p>
+
+        <div class="diagram-frame">
+          <svg viewBox="-60 0 1240 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagTitle diagDesc">
+            <title id="diagTitle">Enterprise revenue bridge</title>
+            <desc id="diagDesc">New seats and opening seats flow into closing seats, which is multiplied by dollars per paid seat across Standard, Premium and Enterprise tiers to equal closing ARR, split into High Touch ARR and Flywheel ARR.</desc>
+            <defs>
+              <marker id="arrTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F6F6F"/></marker>
+              <marker id="arrBrass" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A9762C"/></marker>
+            </defs>
+            <text x="-52" y="46" font-family="IBM Plex Mono" font-size="10.5" fill="#1F6F6F" letter-spacing="0.5">SALES-LED</text>
+            <text x="-52" y="346" font-family="IBM Plex Mono" font-size="10.5" fill="#A9762C" letter-spacing="0.5">PRODUCT-LED</text>
+            <rect x="120" y="30" width="140" height="230" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.4"/>
+            <text x="190" y="150" text-anchor="middle" font-family="Fraunces" font-size="17" fill="#171B26">New</text>
+            <text x="190" y="170" text-anchor="middle" font-family="Fraunces" font-size="17" fill="#171B26">#Seats</text>
+            <g font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">
+              <text x="98" y="64" text-anchor="end">Land</text>
+              <line x1="102" y1="60" x2="118" y2="60" stroke="#1F6F6F" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+              <text x="98" y="104" text-anchor="end">Cross-sell bundle</text>
+              <line x1="102" y1="100" x2="118" y2="100" stroke="#1F6F6F" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+              <text x="98" y="144" text-anchor="end">Cross-sell cross-flow</text>
+              <line x1="102" y1="140" x2="118" y2="140" stroke="#1F6F6F" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+              <text x="98" y="184" text-anchor="end">Migrated ARR</text>
+              <line x1="102" y1="180" x2="118" y2="180" stroke="#1F6F6F" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+            </g>
+            <rect x="120" y="330" width="140" height="230" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.4"/>
+            <text x="190" y="440" text-anchor="middle" font-family="Fraunces" font-size="16" fill="#171B26">Opening</text>
+            <text x="190" y="460" text-anchor="middle" font-family="Fraunces" font-size="16" fill="#171B26">#Seats</text>
+            <g font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">
+              <line x1="260" y1="360" x2="378" y2="360" stroke="#A9762C" stroke-width="1.4" marker-end="url(#arrBrass)"/>
+              <text x="266" y="352">Expand</text>
+              <line x1="260" y1="400" x2="378" y2="400" stroke="#A9762C" stroke-width="1.4" marker-end="url(#arrBrass)"/>
+              <text x="266" y="392">Contract</text>
+              <line x1="260" y1="480" x2="378" y2="480" stroke="#A9762C" stroke-width="1.4" marker-end="url(#arrBrass)"/>
+              <text x="262" y="472">Reactivate</text>
+              <line x1="260" y1="520" x2="378" y2="520" stroke="#A9762C" stroke-width="1.4" marker-end="url(#arrBrass)"/>
+              <text x="280" y="536">Churn</text>
+            </g>
+            <line x1="260" y1="145" x2="378" y2="145" stroke="#1F6F6F" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+            <rect x="382" y="30" width="150" height="530" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.4"/>
+            <text x="457" y="300" text-anchor="middle" font-family="Fraunces" font-size="18" fill="#171B26">Closing</text>
+            <text x="457" y="322" text-anchor="middle" font-family="Fraunces" font-size="18" fill="#171B26">#Seats</text>
+            <circle cx="590" cy="295" r="18" fill="#F1EFE6" stroke="#171B26" stroke-width="1.4"/>
+            <text x="590" y="300" text-anchor="middle" font-family="IBM Plex Mono" font-size="14" fill="#171B26">&#215;</text>
+            <line x1="532" y1="295" x2="572" y2="295" stroke="#171B26" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+            <rect x="628" y="90" width="190" height="410" rx="6" fill="#F8F6EF" stroke="#171B26" stroke-width="1.4"/>
+            <text x="723" y="118" text-anchor="middle" font-family="Fraunces" font-size="16" fill="#171B26">$ / Paid Seat</text>
+            <line x1="608" y1="295" x2="626" y2="295" stroke="#171B26" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+            <rect x="646" y="140" width="154" height="90" rx="6" fill="#FFFFFF" stroke="#4A4F5C" stroke-width="1.1"/>
+            <text x="723" y="180" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">$ / PS</text>
+            <text x="723" y="198" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">Standard</text>
+            <rect x="646" y="248" width="154" height="90" rx="6" fill="#FFFFFF" stroke="#4A4F5C" stroke-width="1.1"/>
+            <text x="723" y="288" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">$ / PS</text>
+            <text x="723" y="306" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">Premium</text>
+            <rect x="646" y="356" width="154" height="90" rx="6" fill="#FFFFFF" stroke="#4A4F5C" stroke-width="1.1"/>
+            <text x="723" y="396" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">$ / PS</text>
+            <text x="723" y="414" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#171B26">Enterprise</text>
+            <circle cx="856" cy="295" r="18" fill="#F1EFE6" stroke="#171B26" stroke-width="1.4"/>
+            <text x="856" y="300" text-anchor="middle" font-family="IBM Plex Mono" font-size="14" fill="#171B26">=</text>
+            <line x1="818" y1="295" x2="838" y2="295" stroke="#171B26" stroke-width="1.4" marker-end="url(#arrTeal)"/>
+            <rect x="896" y="160" width="256" height="270" rx="6" fill="#FBF3E4" stroke="#A9762C" stroke-width="1.6"/>
+            <text x="1024" y="190" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="18" fill="#8A5F20">Closing ARR</text>
+            <line x1="874" y1="295" x2="894" y2="295" stroke="#A9762C" stroke-width="1.6" marker-end="url(#arrBrass)"/>
+            <rect x="916" y="230" width="100" height="170" rx="6" fill="#FFFFFF" stroke="#8A5F20" stroke-width="1.2"/>
+            <text x="966" y="300" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">High</text>
+            <text x="966" y="316" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">Touch</text>
+            <text x="966" y="332" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">ARR</text>
+            <rect x="1032" y="230" width="100" height="170" rx="6" fill="#FFFFFF" stroke="#8A5F20" stroke-width="1.2"/>
+            <text x="1082" y="300" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">Flywheel</text>
+            <text x="1082" y="316" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" fill="#171B26">ARR</text>
+          </svg>
+          <div class="diagram-caption">Bridge model: seat-level movement (sales-led and product-led) &#215; price realised per paid seat by tier = closing ARR, split by go-to-market motion.</div>
+        </div>
+
+        <p style="margin-top:34px;">This bridge is the frame. The value is in what it surfaces when a period comes in off-plan:</p>
+        <ul class="case-list">
+          <li><span class="label">Discounting leakage</span><span class="desc">Traced a forecast miss to incorrect discount coding that was stacking across renewal cycles &mdash; not a demand problem, a billing rule problem.</span></li>
+          <li><span class="label">Grace period gap</span><span class="desc">Missed-payment accounts were coding straight to involuntary churn with no grace window. Quantified the ARR at risk and built the case to introduce one.</span></li>
+          <li><span class="label">Land target miss</span><span class="desc">Segmentation showed the shortfall was concentrated in a single sales-led channel, not broad-based &mdash; changing the fix from a pricing review to a coverage review.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — ANALYTICS FOUNDATIONS -->
+<section class="block" id="foundations">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="--sec-accent:#1F6F6F;">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8 12 13 3 8 Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg></div>
+        <div class="sec-label">Analytics Foundations</div>
+      </div>
+      <div>
+        <h2>Analytics foundations: the platform, the team and the mandate</h2>
+        <p class="kicker">None of the above works if the platform underneath is shaky, the same metric shows three numbers, or nobody can turn a chart into a decision. I've built the case for that foundation, then delivered it &mdash; including the habits that make people trust and use it.</p>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="filler"></div>
+      <div class="sec-content">
+        <p>The investment case rests on three numbers, each tied to a distinct goal rather than a vanity metric:</p>
+        <div class="stat-row">
+          <div class="stat-cell">
+            <div class="num">$450K/yr</div>
+            <div class="basis">Saved across 300 analysts, at 1% re-utilisation of existing work (avg. $150K salary/analyst)</div>
+            <div class="goal"><b>Goal</b> &mdash; drive the improvements and innovation in BI tooling that make re-use possible.</div>
+          </div>
+          <div class="stat-cell">
+            <div class="num">$1.5M/yr</div>
+            <div class="basis">15,000 hours/yr saved across 300 analysts, at one process saving one analyst one hour/week</div>
+            <div class="goal"><b>Goal</b> &mdash; lift efficiency and utilisation, and cut redundant manual process.</div>
+          </div>
+          <div class="stat-cell">
+            <div class="num">10&times;</div>
+            <div class="basis">Faster from question to decision through applied knowledge of BI products and process</div>
+            <div class="goal"><b>Goal</b> &mdash; drive adoption through training, education and embedded BI practice.</div>
+          </div>
+        </div>
+        <h3>One definition, one number, owned by name</h3>
+        <p>Getting the platform right still leaves a governance problem: whose definition of a metric is the real one. This was cross-functional work, run with the departments that owned the metrics, with a named owner in each team for each definition and segment. It took roughly a year to get through the full set.</p>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-head">Agree the definitions</div><div class="tl-body">Metric by metric, segment by segment, worked through with the owning department until there was one accepted definition &mdash; not a data-team version and a finance version.</div></div>
+          <div class="tl-item"><div class="tl-head">Assign ownership</div><div class="tl-body">Each definition sat with a named individual in the relevant team, so drift had someone accountable to catch it.</div></div>
+          <div class="tl-item"><div class="tl-head">Embed it in reporting</div><div class="tl-body">Reports across departments converged on the same number for the same metric &mdash; the test of whether the governance had actually taken.</div></div>
+          <div class="tl-item"><div class="tl-head">Compound the payoff</div><div class="tl-body">Consistent segmentation turned out to matter most in experimentation &mdash; A/B tests read the same segment the same way everywhere, so results were comparable across teams for the first time.</div></div>
+        </div>
+        <h3>Coaching for data literacy</h3>
+        <p>Alongside the governance work, ran hands-on coaching across visualisation practice, storytelling with data and self-service analytics &mdash; the standard was a team member who could turn a shared number into a decision unassisted, not just retrieve it.</p>
+        <p class="pull-quote">&ldquo;Early on, the question in every leadership review was which number is correct. Eighteen months in, that question had essentially disappeared &mdash; the conversation had moved to how do we tell this story better.&rdquo;</p>
+        <h3>The team behind the platform</h3>
+        <p>Before the Business Intelligence Centre of Excellence existed at Atlassian, best practice across analytics, BI and data engineering lived entirely in individual people's heads &mdash; no shared standard, so it left whenever they did. Built the team through lateral hires, contractor hires and internal staff moves, against one hiring bar: someone who could sit with a stakeholder directly and design and build their own solution, not wait for a spec.</p>
+        <div class="diagram-frame">
+          <svg viewBox="40 20 1060 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hsTitle hsDesc">
+          <title id="hsTitle">BI Centre of Excellence operating model</title>
+          <desc id="hsDesc">A BI Core Group sits at the centre, surrounded by five pillars: visual analytics, tools and technology, BI processes, people, and transformed and cleansed data. Around it sit ten teams. Platform and foundation teams on the left: analytics pipeline, exploration analysis, stats and metrics, data engineering, decision science, and education and enablement. Embedded analytics teams on the right: CSS, customer, marketing and product analytics, which receive best practice, support, collaboration, mentorship and process improvement from the hub.</desc>
+          <defs><marker id="coeArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A9762C"/></marker></defs>
+          <circle cx="560" cy="330" r="232" fill="none" stroke="#4A4F5C" stroke-width="1.3" stroke-dasharray="6 5"/>
+          <path d="M481.2,216.7 A138,138 0 0 1 638.8,216.7 L601.1,270.9 A72,72 0 0 0 518.9,270.9 Z" fill="#DCEBE8" stroke="#1F6F6F" stroke-width="1.1"/>
+          <text x="560.0" y="222.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Visual</text><text x="560.0" y="237.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Analytics</text>
+          <path d="M643.4,220.1 A138,138 0 0 1 692.1,369.9 L628.9,350.8 A72,72 0 0 0 603.5,272.6 Z" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.1"/>
+          <text x="659.9" y="294.6" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Tools &amp;</text><text x="659.9" y="309.6" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Technology</text>
+          <path d="M690.3,375.4 A138,138 0 0 1 562.9,468.0 L561.5,402.0 A72,72 0 0 0 628.0,353.7 Z" fill="#DCEBE8" stroke="#1F6F6F" stroke-width="1.1"/>
+          <text x="621.7" y="411.9" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">BI</text><text x="621.7" y="426.9" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Processes</text>
+          <path d="M557.1,468.0 A138,138 0 0 1 429.7,375.4 L492.0,353.7 A72,72 0 0 0 558.5,402.0 Z" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.1"/>
+          <text x="498.3" y="418.9" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">People</text>
+          <path d="M427.9,369.9 A138,138 0 0 1 476.6,220.1 L516.5,272.6 A72,72 0 0 0 491.1,350.8 Z" fill="#DCEBE8" stroke="#1F6F6F" stroke-width="1.1"/>
+          <text x="460.1" y="294.6" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Transformed &amp;</text><text x="460.1" y="309.6" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="#171B26">Cleansed Data</text>
+          <circle cx="560" cy="330" r="62" fill="#FBF3E4" stroke="#A9762C" stroke-width="1.6"/>
+          <text x="560" y="327" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="15" fill="#8A5F20">BI Core</text><text x="560" y="345" text-anchor="middle" font-family="Fraunces" font-weight="600" font-size="15" fill="#8A5F20">Group</text>
+          <circle cx="560.0" cy="98.0" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="560.0" y="94.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Education &amp;</text>
+          <text x="560.0" y="110.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Enablement</text>
+          <text x="494.0" y="68.0" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Visualisation best practice, perception and consistency</text>
+          <text x="494.0" y="83.0" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Data quality and experimentation</text>
+          <circle cx="696.4" cy="142.3" r="54" fill="#F6EBD8" stroke="#A9762C" stroke-width="1.4"/>
+          <text x="696.4" y="138.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">CSS</text>
+          <text x="696.4" y="154.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Analytics</text>
+          <circle cx="780.6" cy="258.3" r="54" fill="#F6EBD8" stroke="#A9762C" stroke-width="1.4"/>
+          <text x="780.6" y="254.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Customer</text>
+          <text x="780.6" y="270.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Analytics</text>
+          <circle cx="780.6" cy="401.7" r="54" fill="#F6EBD8" stroke="#A9762C" stroke-width="1.4"/>
+          <text x="780.6" y="397.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Marketing</text>
+          <text x="780.6" y="413.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Analytics</text>
+          <circle cx="696.4" cy="517.7" r="54" fill="#F6EBD8" stroke="#A9762C" stroke-width="1.4"/>
+          <text x="696.4" y="513.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Product</text>
+          <text x="696.4" y="529.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Analytics</text>
+          <circle cx="560.0" cy="562.0" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="560.0" y="558.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Decision</text>
+          <text x="560.0" y="574.0" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Science</text>
+          <text x="626.0" y="580.0" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Standards, definitions,</text>
+          <text x="626.0" y="595.0" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">single source of truth</text>
+          <circle cx="423.6" cy="517.7" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="423.6" y="513.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Data</text>
+          <text x="423.6" y="529.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Engineering</text>
+          <text x="357.6" y="506.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Data models, quality,</text>
+          <text x="357.6" y="521.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">governance, lineage</text>
+          <text x="357.6" y="536.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">and pipelines</text>
+          <circle cx="339.4" cy="401.7" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="339.4" y="389.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" font-weight="400" fill="#171B26">Platform:</text>
+          <text x="339.4" y="405.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="400" fill="#171B26">Stats &amp;</text>
+          <text x="339.4" y="421.7" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Metrics</text>
+          <text x="273.4" y="390.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Metric management,</text>
+          <text x="273.4" y="405.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">computation and pipeline;</text>
+          <text x="273.4" y="420.7" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">statistical analysis</text>
+          <circle cx="339.4" cy="258.3" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="339.4" y="246.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" font-weight="400" fill="#171B26">Platform:</text>
+          <text x="339.4" y="262.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="400" fill="#171B26">Exploration</text>
+          <text x="339.4" y="278.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Analysis</text>
+          <text x="273.4" y="247.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Notebooks, data discovery,</text>
+          <text x="273.4" y="262.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">exploratory analysis</text>
+          <text x="273.4" y="277.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">and visualisation</text>
+          <circle cx="423.6" cy="142.3" r="54" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.4"/>
+          <text x="423.6" y="130.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" font-weight="400" fill="#171B26">Platform:</text>
+          <text x="423.6" y="146.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="400" fill="#171B26">Analytics</text>
+          <text x="423.6" y="162.3" text-anchor="middle" font-family="IBM Plex Sans" font-size="12.5" font-weight="600" fill="#171B26">Pipeline</text>
+          <text x="357.6" y="131.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">Analytics clients and service,</text>
+          <text x="357.6" y="146.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">events catalogue,</text>
+          <text x="357.6" y="161.3" text-anchor="end" font-family="IBM Plex Sans" font-size="11.5" fill="#4A4F5C">cloud events tables</text>
+          <path d="M728.1,98.6 Q849.1,214.3 924,316" fill="none" stroke="#A9762C" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#coeArr)"/>
+          <path d="M832.0,241.6 Q901.0,285.8 924,316" fill="none" stroke="#A9762C" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#coeArr)"/>
+          <path d="M832.0,418.4 Q901.0,374.2 924,356" fill="none" stroke="#A9762C" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#coeArr)"/>
+          <path d="M728.1,561.4 Q849.1,445.7 924,356" fill="none" stroke="#A9762C" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#coeArr)"/>
+          <text x="930" y="328" font-family="IBM Plex Sans" font-size="11.5" font-weight="500" fill="#171B26">Best practice, support,</text>
+          <text x="930" y="343" font-family="IBM Plex Sans" font-size="11.5" font-weight="500" fill="#171B26">collaboration, mentorship,</text>
+          <text x="930" y="358" font-family="IBM Plex Sans" font-size="11.5" font-weight="500" fill="#171B26">process improvement</text>
+          <circle cx="70" cy="625" r="7" fill="#E6F0EE" stroke="#1F6F6F" stroke-width="1.3"/><text x="84" y="629" font-family="IBM Plex Mono" font-size="11" fill="#4A4F5C">Platform and foundation teams</text>
+          <circle cx="330" cy="625" r="7" fill="#F6EBD8" stroke="#A9762C" stroke-width="1.3"/><text x="344" y="629" font-family="IBM Plex Mono" font-size="11" fill="#4A4F5C">Embedded analytics teams</text>
+          </svg>
+          <div class="diagram-caption">The BI Core Group sits at the centre, built on five pillars. Platform and foundation teams build the shared layers. Embedded analytics teams keep their reporting lines and draw best practice, support and mentorship from the hub.</div>
+        </div>
+        <p style="margin-top:34px;">Partnered directly with Data Engineering to build a centralised data model underneath the reporting layer &mdash; internally called the hypercube &mdash; a single governed source running from company-wide topline KPIs down to the smallest segment a given team needed, and with Platform Engineering on the governance tooling itself.</p>
+        <ul class="case-list">
+          <li><span class="label">Metrics under governance</span><span class="desc">Grew from six to thirty-five over roughly eighteen months, expanding because teams pulled it in themselves rather than being mandated to.</span></li>
+          <li><span class="label">Measured impact</span><span class="desc">The Centre of Excellence delivered over $1.5M in measurable productivity impact through the shared standards and tooling it built.</span></li>
+          <li><span class="label">Career pipeline</span><span class="desc">Pulled junior team members into stakeholder conversations early, including sessions with the CEO and Exec Ops, so the bench built careers, not just technical depth.</span></li>
+        </ul>
+        <h3>Leading without authority</h3>
+        <p>None of the analytics teams, Platform Engineering or Data Engineering reported to me or to my manager, so the Centre of Excellence only happened through a coalition built one stakeholder at a time, backed by a case that could survive scrutiny.</p>
+        <h3>Building the case, in the right order</h3>
+        <p>Built the business case on three numbers &mdash; productivity (one hour a week saved per analyst across roughly 300 analysts, near $1.5M a year), reusability (teams were duplicating the same definitions and SQL logic independently), and speed to insight (close to 10x faster from question asked to question answered). Took that case to my own manager first, stress-tested the harder, less certain cost side with him, and only then approached the five department heads and two platform-adjacent teams whose people and participation the plan actually needed.</p>
+        <h3>Earning a sceptical stakeholder</h3>
+        <p>One head of analytics had seen Centres of Excellence before and expected overhead, not outcomes, and said as much in front of the wider group. The number-led pitch alone didn't land. Reframed it around what she actually cared about &mdash; her analysts spending their time hunting for a trustworthy answer instead of interpreting one &mdash; then built a centralised data cube specifically to answer her team's recurring questions. The cube, not the pitch, was what earned her trust: she saw her own team's time shift from finding data to interpreting it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — FRACTIONAL COO -->
+<section class="block" id="coo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="--sec-accent:#A9762C;">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
+        <div class="sec-label">Fractional COO</div>
+      </div>
+      <div>
+        <h2>Fractional COO, helping a startup raise funds</h2>
+        <p class="kicker">Part-time operating leadership, currently focused on helping a startup prepare for and run its capital raise.</p>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="filler"></div>
+      <div class="sec-content">
+        <p>I am working as a Fractional COO with a startup that is raising funds. The work draws on the same habits as the rest of this page: numbers that stand up to scrutiny, a story investors can follow, and the governance to hold it together.</p>
+        <ul class="case-list">
+          <li><span class="label">Investor-ready numbers</span><span class="desc">Financial and scenario modelling of the kind built for the UCLA capstone market-entry plan: revenue projections, NPV, IRR and breakeven, stress-tested before anyone outside sees them.</span></li>
+          <li><span class="label">Both sides of the table</span><span class="desc">As an angel investor with Sydney Angels, I know what a diligence pack has to answer, and where founders tend to leave gaps.</span></li>
+          <li><span class="label">Governance</span><span class="desc">Company director training applied to board reporting, investor updates and the operating rhythm a funded company needs.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — AI STRATEGY -->
+<section class="block" id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num" style="--sec-accent:#1F6F6F;">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+        <div class="sec-label">AI Strategy</div>
+      </div>
+      <div>
+        <h2>AI strategy, grounded in data and hands-on builds</h2>
+        <p class="kicker">AI pays off on the same foundations as analytics: trusted data, clear decisions and people who use it. I work on the strategy, and build enough myself to know what is real.</p>
+      </div>
+    </div>
+    <div class="sec-body">
+      <div class="filler"></div>
+      <div class="sec-content">
+        <p>Formal grounding from UC Berkeley&rsquo;s AI: Business Strategies and Applications programme, alongside ongoing, hands-on evaluation of agentic tools such as Cursor, Claude Code and Codex.</p>
+        <ul class="case-list">
+          <li><span class="label">Agentic builds</span><span class="desc">Specced an agent to crawl Fortune 500 career pages, map the roles geospatially and score each against a CV, testing tool-use loops and stopping conditions in practice rather than in a demo.</span></li>
+          <li><span class="label">Workflow automation</span><span class="desc">Built a custom stock research workflow that produces a repeatable weekly market report in a compact, scannable format.</span></li>
+          <li><span class="label">Voice AI concept</span><span class="desc">Stress-tested a voice-AI platform matching candidates to company leaders across scientific validity, legal exposure, technical architecture and the founder pitch.</span></li>
+          <li><span class="label">Foundations first</span><span class="desc">Tying AI use cases back to governed data and agreed metric definitions, so a model answers the same question the business is asking.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Success Stories</h2>
+      <p>Nine engagements, expanded below with the ask, the approach and the outcome — spanning technology, government, insurance, energy and financial services, from $150K coaching programs to a $900M business transformation. A further eight engagements are listed underneath in brief.</p>
+    </div>
+<div class="case-grid">
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A global SaaS technology company — BI Centre of Excellence &amp; Enterprise Reporting</div>
+        <div class="case-meta">Technology, Sydney, 2017–2021 and 2022–2025</div>
+        <div class="case-ask">Build board-grade commercial reporting and a scalable BI function from a standing start, for a $5.2B ARR business.</div>
+      </div>
+      <div class="case-value">$1.5M+ impact</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>No shared definitions or governance existed across analytics teams — product, marketing, sales and finance each ran their own, and leadership regularly saw conflicting numbers for the same metric in the same meeting.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Built the BI Centre of Excellence on a hub-and-spoke operating model: analysts stayed embedded in their departments, coordinated through a shared hub.</li>
+        <li>Established governance, self-serve tooling and consistent visualisation standards across the organisation.</li>
+        <li>Owned reporting on the company's key metrics — ACV, ARR, PEU, Paid Seats, MAU and Customers.</li>
+        <li>Delivered commercial insight to the CEO and Exec Ops on $10M+ variances in monthly business reviews and long-range planning.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>$1.5M+ measurable impact from the Centre of Excellence; 20% YoY growth tracked and explained across a $5.2B revenue base; a 15–18% productivity improvement from partnering with People and Finance on workforce distribution.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A national tax and revenue authority — Legacy-to-SOA Data Migration</div>
+        <div class="case-meta">Government, New Zealand, March–July 2012</div>
+        <div class="case-ask">Migrate the data layer of a $900M national tax and revenue transformation off a legacy mainframe.</div>
+      </div>
+      <div class="case-value">$900M program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>A national tax-and-revenue system needed to move off legacy mainframe infrastructure onto a service-oriented architecture, without breaking service continuity for the country's revenue collection.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Owned data migration leadership for the transformation.</li>
+        <li>Built and owned the services traceability model mapping application and data services (the meta-model).</li>
+        <li>Mapped existing data processes to the new service architecture.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Delivered the meta-model that underpinned the transformation's data layer — for a program an order of magnitude larger than most engagements in scope and national consequence.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A large building materials and industrials company — Finance Reporting Modernisation</div>
+        <div class="case-meta">Industrials, Australia, June 2016–August 2018</div>
+        <div class="case-ask">Replace legacy Oracle Finance reporting with a modern cloud analytics platform, and get Finance self-serving.</div>
+      </div>
+      <div class="case-value">$500K program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Finance teams had no self-service path to their own numbers — every report ran through a small central reporting team, creating a bottleneck on routine finance questions.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Led a $500K transformation and change management program migrating financial models and dashboards to Tableau.</li>
+        <li>Trained and mentored Finance teams directly so they could build their own insights.</li>
+        <li>Enabled data democratisation across the Finance function.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Adoption was strong enough that it led to an enterprise-scaled Tableau implementation well beyond the original Finance-only scope.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A state government workforce commission — Workforce Analytics Platform</div>
+        <div class="case-meta">Government, Australia, 2011 and 2012–2013</div>
+        <div class="case-ask">Build a data platform to manage a state department's workforce data and reporting needs.</div>
+      </div>
+      <div class="case-value">$750K program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Workforce insight needed to reach multiple government agencies across the state of NSW, not stay siloed inside the commission itself.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Led the cross-functional delivery team for the $750K program.</li>
+        <li>Built data pipelines and conducted market research to inform the platform's design.</li>
+        <li>Designed reports and dashboards for Workforce Insights, used across NSW government agencies.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Curated workforce data and insight delivered from a single platform to multiple state agencies, not just the commissioning department.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A global travel insurance provider — Business Reporting Data Platform</div>
+        <div class="case-meta">Insurance, Australia, March–June 2013</div>
+        <div class="case-ask">Deliver a data platform to keep pace with rapidly increasing business reporting demand.</div>
+      </div>
+      <div class="case-value">$600K program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Reporting demand was outgrowing the existing data infrastructure, with new requests arriving faster than the platform could support.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Led the functional delivery stream of the $600K project.</li>
+        <li>Gathered requirements, designed data models and the solution architecture.</li>
+        <li>Built reports and coordinated an offshore delivery team.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>A reporting foundation scaled to match the business's growing data demand, delivered through a coordinated onshore-offshore model.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">An investment research and financial services firm — Customer360 on Snowflake &amp; Talend</div>
+        <div class="case-meta">Financial services, Australia, April–December 2018</div>
+        <div class="case-ask">Build an integrated Customer360 view to enable a unified customer experience.</div>
+      </div>
+      <div class="case-value">$300K program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Customer data was fragmented across systems, with no single layer the customer-experience team could build on.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Led a cross-functional team through the design and build of a cloud data architecture on Snowflake and Talend.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>A working Customer360 view that enabled integrated customer-experience initiatives across the business.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A state transport authority — Data Governance &amp; Literacy Program</div>
+        <div class="case-meta">Government, Australia, July–September 2019</div>
+        <div class="case-ask">Design a data governance model with an adoption framework, and lift data storytelling capability.</div>
+      </div>
+      <div class="case-value">$150K program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Analytics maturity varied widely across the organisation, and governance existed more on paper than in day-to-day practice.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Designed a data governance model with an Analytics focus and an Adoption Framework to operationalise it.</li>
+        <li>Led a coaching program in data visualisation, storytelling and customer experience.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>A governance model built specifically to be adopted rather than shelved, paired with coaching that built capability the organisation kept after the engagement ended.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A national energy retailer — Legacy Platform Migration</div>
+        <div class="case-meta">Energy, Australia, January–June 2021</div>
+        <div class="case-ask">Deliver two fixed-price legacy data platform migrations in parallel.</div>
+      </div>
+      <div class="case-value">2 × $300K</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>Two parallel migration programs, each with their own stakeholders and overlapping requirements, needed to land on fixed-price terms.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Led two cross-functional delivery teams across the parallel programs.</li>
+        <li>Also led the functional unit of a third, concurrent program within the same account.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>Both fixed-price migrations delivered, while carrying functional leadership on a third concurrent program in the same account.</p>
+    </div>
+  </details>
+
+  <details class="case">
+    <summary class="case-head">
+      <div>
+        <div class="case-title">A consumer finance and leasing company — Enterprise Data Warehouse</div>
+        <div class="case-meta">Financial leasing, Australia, August 2011–February 2012</div>
+        <div class="case-ask">Deliver a single view of product and customer to support business decisioning.</div>
+      </div>
+      <div class="case-value">~$1M program</div>
+      <div class="case-chevron">&#9662;</div>
+    </summary>
+    <div class="case-body">
+      <h4>Context</h4>
+      <p>The business had no single place to see product and customer data together, which slowed decisioning across pricing, credit and sales.</p>
+      <h4>What I did</h4>
+      <ul>
+        <li>Onsite lead for design, build and test of an onshore-offshore delivered data warehouse platform.</li>
+      </ul>
+      <h4>Outcome</h4>
+      <p>A single view of product and customer that gave the business a decisioning foundation it hadn't had before.</p>
+    </div>
+  </details>
+
+</div>
+
+<div>
+  <h2 class="more-heading">Additional engagements</h2>
+  <ul class="more-list">
+    <li><span class="client">An automotive data and information services company</span><span class="dates">Dec 2018 – Jun 2019</span><span class="scope">Cloud data platform on Snowflake, $200K fixed price, with Tableau reporting layer</span></li>
+    <li><span class="client">An asset management firm</span><span class="dates">Aug – Oct 2016</span><span class="scope">Information management landscape assessment and future-state, self-service architecture advisory</span></li>
+    <li><span class="client">A health insurance and services provider</span><span class="dates">Jun – Jul 2016</span><span class="scope">Independent data &amp; analytics ecosystem assessment and capability advisory</span></li>
+    <li><span class="client">A major U.S. life insurance company</span><span class="dates">Oct – Nov 2010</span><span class="scope">End-to-end data strategy program and executive dashboard design for life insurance KPIs</span></li>
+    <li><span class="client">A major life insurance company in Hong Kong</span><span class="dates">Aug – Sep 2010</span><span class="scope">IT transformation bid support and best-of-breed solution architecture evaluation</span></li>
+    <li><span class="client">A national central bank</span><span class="dates">Nov 2009 – Jan 2010</span><span class="scope">Banking data warehouse requirements assessment for specialised wealth-management marts</span></li>
+    <li><span class="client">A large U.S. regional bank</span><span class="dates">Oct 2009 – Jul 2010</span><span class="scope">Credit Risk Data Mart on Data Vault; data mapping and ETL pipeline design</span></li>
+    <li><span class="client">A global securities and investment banking firm</span><span class="dates">Dec 2006 – Sep 2009</span><span class="scope">SWIFT reporting application development; stock reconciliation and fund accounting support</span></li>
+  </ul>
+</div>
+  </div>
+</section>
+
+<!-- BY THE NUMBERS -->
+<section class="block" id="numbers">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>What that adds up to</h2>
+    </div>
+    <div class="num-grid">
+      <div class="num-cell"><div class="num">$5.2B</div><div class="label">Revenue base reported on monthly to CEO and Exec Ops</div></div>
+      <div class="num-cell"><div class="num">$10M+</div><div class="label">Variances explained in monthly business reviews</div></div>
+      <div class="num-cell"><div class="num">20%</div><div class="label">YoY growth tracked and explained</div></div>
+      <div class="num-cell"><div class="num">$1.5M+</div><div class="label">Delivered via the BI Centre of Excellence</div></div>
+      <div class="num-cell"><div class="num">$500M</div><div class="label">In acquisitions supported via competitive intelligence</div></div>
+      <div class="num-cell"><div class="num">20+ yrs</div><div class="label">Across Tech, Consulting and Finance</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Experience</h2>
+      <p>Across Tech, Consulting and Finance, in APAC, ANZ and the USA.</p>
+    </div>
+    <div class="role-timeline">
+
+      <div class="role-item">
+        <div class="role-title">Fractional COO</div>
+        <div class="role-meta">Early-stage startup, current</div>
+        <ul>
+          <li>Helping the founding team prepare and run its capital raise.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Head of Business Performance Insights | Head of BI</div>
+        <div class="role-meta">Atlassian, Sydney, 2017&ndash;2021 and 2022&ndash;2025</div>
+        <ul>
+          <li>Delivered commercial insight to the CEO and Exec Ops on $10M+ variances and 20% YoY growth across a $5.2B revenue base.</li>
+          <li>Advised Corporate Development on acquisition targeting up to $500M via competitive intelligence, CLV and churn modelling.</li>
+          <li>Built the BI Centre of Excellence, embedding self-serve tooling and governance that delivered $1.5M+ in impact.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Strategy Manager | UCLA MBA Capstone</div>
+        <div class="role-meta">Zientte, Los Angeles, 2024&ndash;2025</div>
+        <ul>
+          <li>Developed a 5-year U.S. market-entry plan projecting $3.2M annual revenue and 25% net margin by Year 5.</li>
+          <li>Built financial and scenario models: NPV of $401K at a 10% discount rate, IRR of 38.9%, cash-flow breakeven in Year 5.</li>
+          <li>Researched Florida's premium furniture segment (SAM &asymp; $280M, SOM &asymp; $6.2M) to target geographies and segments.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Digital Strategy Manager</div>
+        <div class="role-meta">Accenture, Sydney, 2016&ndash;2022</div>
+        <ul>
+          <li>Accountable for $1M+ annual analytics and digital transformation programs at ~40% margin for enterprise clients.</li>
+          <li>Advised C-suite and business leaders on data strategy, customer insight and digital transformation.</li>
+          <li>Led global teams delivering data and analytics modernisation on Azure, AWS and Snowflake.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Business Intelligence Manager</div>
+        <div class="role-meta">Humm (previously Flexigroup), Sydney, 2014&ndash;2016</div>
+        <ul>
+          <li>Secured executive sponsorship for a ~$1M modern data strategy and built the transformation business case.</li>
+          <li>Implemented a federated cloud data platform with a single source of truth across finance, sales, ops and customer data.</li>
+          <li>Reduced loss ratio by 0.2% through unified, high-quality performance insight.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Senior MIS Analyst, Core Banking Operations &ndash; Retail</div>
+        <div class="role-meta">Westpac, Australia, 2013&ndash;2014</div>
+        <ul>
+          <li>Owned MIS reporting and analytics for customer account services, retail banking, operational risk, fraud and compliance.</li>
+          <li>Consolidated operational data and performance metrics across those functions.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Senior Consultant, Financial Services Global Business Unit</div>
+        <div class="role-meta">Capgemini, India, Hong Kong, New Zealand and Australia, 2006&ndash;2012</div>
+        <ul>
+          <li>Led cross-border teams delivering enterprise data platforms, pipelines and analytics for BFSI clients, with $500M+ in measurable business impact from data investments.</li>
+          <li>Advised executives on data strategy and governance aligned to financial and operational objectives.</li>
+          <li>Engagements included CoverMore, Inland Revenue NZ, NSW Public Service Commission, New York Life, AXA Hong Kong, Bank of Finland, BB&amp;T and Daiwa Securities &mdash; full detail on the <a href="#projects">Projects section</a>.</li>
+        </ul>
+      </div>
+
+      <div class="role-item">
+        <div class="role-title">Business Insights Consultant (Pro Bono)</div>
+        <div class="role-meta">Oil Search Foundation, Australia and Papua New Guinea, 2017&ndash;2018</div>
+        <ul>
+          <li>Delivered insights from outreach medical data collected across remote and underserved regions of Papua New Guinea.</li>
+          <li>Enabled data-driven visibility into UN Sustainable Development Goals: clean water, gender equality, zero hunger and children's health.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="cred-columns">
+      <div>
+        <h4>Education</h4>
+        <ul>
+          <li>GAICD, Australian Institute of Company Directors &mdash; 2025</li>
+          <li>AI: Business Strategies and Applications, UC Berkeley &mdash; 2025&ndash;26</li>
+          <li>Executive MBA, NUS Business School &mdash; 2024&ndash;25 (GPA 4.39)</li>
+          <li>Executive MBA, UCLA Anderson School &mdash; 2024&ndash;25 (GPA 3.83)</li>
+          <li>Corporate Governance Specialisation, UCLA Anderson &mdash; 2024&ndash;25</li>
+          <li>Business Strategy &amp; Financial Acumen, INSEAD &mdash; 2021&ndash;22</li>
+          <li>B.E. (Electrical), India &mdash; 2002&ndash;06, First Division</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Certifications & affiliations</h4>
+        <ul>
+          <li>Stephen Few: Certified Data Visualization, Perceptual Edge</li>
+          <li>Certified Data Vault Data Modeller (CDVDM)</li>
+          <li>Tableau Desktop Certified Associate</li>
+          <li>Graduate, Australian Institute of Company Directors (GAICD)</li>
+          <li>Investor, Sydney Angels</li>
+          <li>Affiliated Member, Board Connections at Anderson (BCA)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- TECH STACK -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Tech stack</h2>
+    </div>
+    <div class="stack-groups">
+      <div class="stack-group" style="--sg-accent:#1F6F6F;">
+        <div class="stack-group-head">Visualisation &amp; BI</div>
+        <div class="stack-grid"><span class="stack-badge"><span class="name">Tableau</span></span><span class="stack-badge"><span class="name">Looker</span></span><span class="stack-badge"><span class="name">ThoughtSpot</span></span><span class="stack-badge"><span class="name">Business Objects</span></span><span class="stack-badge"><span class="name">QlikView</span></span><span class="stack-badge"><span class="name">Microsoft SSRS</span></span><span class="stack-badge"><span class="name">Microsoft SSAS</span></span></div>
+      </div>
+      <div class="stack-group" style="--sg-accent:#A9762C;">
+        <div class="stack-group-head">Cloud data platforms &amp; integration</div>
+        <div class="stack-grid"><span class="stack-badge"><span class="name">Snowflake</span></span><span class="stack-badge"><span class="name">Databricks</span></span><span class="stack-badge"><span class="name">Microsoft Azure</span></span><span class="stack-badge"><span class="name">AWS</span></span><span class="stack-badge"><span class="name">Talend</span></span></div>
+      </div>
+      <div class="stack-group" style="--sg-accent:#1F6F6F;">
+        <div class="stack-group-head">Databases &amp; languages</div>
+        <div class="stack-grid"><span class="stack-badge"><span class="name">SQL / T-SQL</span></span><span class="stack-badge"><span class="name">SQL Server / Azure SQL</span></span><span class="stack-badge"><span class="name">Oracle</span></span><span class="stack-badge"><span class="name">Informix</span></span><span class="stack-badge"><span class="name">SAS &amp; SAS Enterprise Guide</span></span><span class="stack-badge"><span class="name">Unix shell scripting</span></span><span class="stack-badge"><span class="name">C</span></span></div>
+      </div>
+      <div class="stack-group" style="--sg-accent:#A9762C;">
+        <div class="stack-group-head">Modelling &amp; delivery</div>
+        <div class="stack-grid"><span class="stack-badge"><span class="name">Data Vault modelling</span></span><span class="stack-badge"><span class="name">Kimball dimensional modelling</span></span><span class="stack-badge"><span class="name">ERwin</span></span><span class="stack-badge"><span class="name">UML</span></span><span class="stack-badge"><span class="name">Jira</span></span><span class="stack-badge"><span class="name">SharePoint</span></span><span class="stack-badge"><span class="name">MS Visio &amp; Project</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENTLY BUILDING -->
+<section class="block" id="building">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Currently building</h2>
+      <p>Personal builds and experiments &mdash; some shipped and in daily use, some still being stress-tested.</p>
+    </div>
+    <div class="build-grid">
+      <div class="build-card">
+        <div class="status">Prototype</div>
+        <h3>AI Agent Build</h3>
+        <p>Specced an agent to crawl Fortune 500 career pages, geospatially map the roles, and score each one against my CV &mdash; a live test of tool-use loops (search, read file, run code) and stopping conditions, not just a demo.</p>
+        <a class="build-link" href="https://jobsdotai.base44.app/" target="_blank" rel="noopener">View the live build &rarr;</a>
+      </div>
+      <div class="build-card">
+        <div class="status">Concept, stress-tested</div>
+        <h3>Human Profiling Startup</h3>
+        <p>A bilateral voice-AI platform matching candidates to company leaders using narrative psychology and structured psychometrics. Stress-tested across scientific validity, legal exposure, technical architecture and the founder pitch. Antler Australia is the target entry point.</p>
+        <div class="status status-search">Searching for an AI architect</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="block" id="interests">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Interests</h2>
+    </div>
+    <div class="interest-grid">
+      <div class="interest-item">
+        <div class="i-title">Photography</div>
+        <p>Award-winning photographer &mdash; recognised by Moscow MIFA, Monochrome Awards and the Epson Pano Awards. Full portfolio at <a href="https://lightscameraactionphotography.com">lightscameraactionphotography.com</a>.</p>
+      </div>
+      <div class="interest-item">
+        <div class="i-title">Stock market analysis</div>
+        <p>Active interest in market structure and single-name research, sharp enough to have built my own ticker-research workflow rather than rely on generic screeners.</p>
+      </div>
+      <div class="interest-item">
+        <div class="i-title">Emerging AI &amp; agentic tools</div>
+        <p>Hands-on evaluation of Cursor, Claude Code and Codex, and a running interest in how agentic tooling changes enterprise workflows.</p>
+      </div>
+      <div class="interest-item">
+        <div class="i-title">Angel investing</div>
+        <p>Investor with Sydney Angels, backing early-stage Australian startups alongside technical and financial due diligence work.</p>
+      </div>
+      <div class="interest-item">
+        <div class="i-title">Coffee culture</div>
+        <p>A genuine, ongoing interest &mdash; the kind that follows you into every city you travel to for work.</p>
+      </div>
+      <div class="interest-item">
+        <div class="i-title">Community &amp; not-for-profit work</div>
+        <p>Involved in community and NFP work across multiple countries, including Oil Search Foundation and organisations focused on education equity and women's empowerment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="block" id="recommendations">
+  <div class="wrap">
+    <div class="block-head">
+      <h2>Recommendations</h2>
+      <p>Pulled from LinkedIn, spanning fifteen years and five companies.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <blockquote>&ldquo;I've had the pleasure of working with Sourav in his role delivering business intelligence and analytics for our I&amp;A function. I was impressed by the high standard of his work and deeply valued the high impact he brought to team culture, change initiatives and business outcomes. Sourav is one of those rare professionals who can listen to business needs, navigate systems and processes and embrace complex data challenges &mdash; translating data into clear, actionable insight.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/yvonne-koncek-bb0a9737/" target="_blank" rel="noopener">Yvonne Koncek</a></b> &mdash; Data, AI, Analytics &amp; Operations Leader. Managed Sourav directly, September 2025.</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>&ldquo;In the five years I have worked with Sourav, I have come to appreciate him as a hard working, true professional and an exceptional consultant. Sourav's personable approach, his broad knowledge in the data &amp; analytics space and the clear thinking he brings to his projects make him a widely appreciated team member I would recommend without hesitation.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/hedde-schuitemaker/" target="_blank" rel="noopener">Hedde Schuitemaker</a></b> &mdash; Building Strong Teams for Data, Analytics, and AI Solutions. Senior to Sourav, August 2022.</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>&ldquo;Sourav has been an extremely hard working consultant who has demonstrated his knowledge in the D&amp;A space across multiple clients and industries. He has a generally calm demeanor which he uses to his advantage during pressure situations.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/saurabh-mathur-0640296/" target="_blank" rel="noopener">Saurabh Mathur</a></b> &mdash; Managing Director, Data Led Transformation. Managed Sourav directly, August 2022.</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>&ldquo;Rather than say it was great working with Sourav, it would be more apt to say it was great having Sourav lead. Really appreciate Sourav's initiative in identifying issues, coordinating across teams, and putting solutions in place. And of course, great technically with respect to data and visualizations.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/roshanshah1/" target="_blank" rel="noopener">Roshan Shah</a></b> &mdash; Principal Technical Program Manager. Managed Sourav directly, March 2021.</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>&ldquo;Sourav is both a knowledgeable and highly professional BI consultant. I worked with him as the project manager on a BI strategy for a major government client, where the team was tasked with bringing the latest thinking on information architecture and data modelling to the project. Sourav was the lead for these two areas and surpassed the client's expectations in terms of the quality of the architecture and modelling he developed, and the level of innovation he provided. His contribution was a key factor in the project's success.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/bwcosborne/" target="_blank" rel="noopener">Ben Osborne</a></b> &mdash; Director, Engagement and Governance. Worked with Sourav on a different team, June 2016.</div>
+      </div>
+      <div class="testimonial">
+        <blockquote>&ldquo;Sourav was a great asset to have in my Business Intelligence team at Westpac, as he possesses an all-too-rare mix of technical and business skills. He is an excellent communicator and is very effective at working with his customers to interpret what they say and understand their true needs &mdash; that effective bridge between technical and business people that is key towards delivering the best solutions.&rdquo;</blockquote>
+        <div class="t-attr"><b><a class="t-link" href="https://www.linkedin.com/in/david-perry-a7a9161/" target="_blank" rel="noopener">David Perry</a></b> &mdash; Senior MIS Specialist, Data Platforms, Group Technology, Westpac. Worked with Sourav on the same team, June 2016.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-row">
+    <img class="contact-photo" src="data:image/jpeg;base64,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" alt="Sourav Dasgupta" width="160" height="160">
+    <div>
+    <div class="block-head" style="margin-bottom:24px;">
+      <h2>Let's talk more about how I can help you</h2>
+    </div>
+    <div class="credentials" style="margin-bottom:28px;">
+      <div><b>Fractional COO</b>, startup capital raise</div>
+      <div><b>Head of Business Performance Insights &amp; BI</b>, Atlassian</div>
+      <div><b>Data and Analytics Leader</b>, Engineer &amp; Data Scientist</div>
+      <div class="cred-line"><b>Executive MBA</b>, UCLA Anderson School of Management, 2024&ndash;25</div>
+      <div class="cred-line"><b>Executive MBA</b>, NUS Business School, Singapore, 2024&ndash;25</div>
+      <div class="cred-line"><b>GAICD</b> (AICD Company Director), May 2025</div>
+    </div>
+    <div class="hero-cta" style="margin-top:0;">
+      <a href="https://www.linkedin.com/in/dasgupta-sourav/" class="primary">Get in touch on LinkedIn</a>
+      <a href="#projects" class="button">View Projects</a>
+    </div>
+    <div class="fine" style="margin-top:22px; font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft);">Sydney, Australia</div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
