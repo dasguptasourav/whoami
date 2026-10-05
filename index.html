@@ -24,7 +24,8 @@
 
   /* Header */
   header{position:sticky; top:0; z-index:20; background:rgba(241,239,230,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
-  .headbar{display:flex; align-items:center; justify-content:space-between; padding:16px 0;}
+  .headbar{display:flex; align-items:center; justify-content:space-between; padding:16px 32px;}
+  @media (max-width:640px){ .headbar{padding-left:20px; padding-right:20px;} }
   .wordmark{font-family:var(--serif); font-weight:600; font-size:1.1rem;}
   .wordmark span{color:var(--brass-deep);}
   nav{display:flex; align-items:center; gap:20px;}
@@ -37,12 +38,26 @@
   nav a.projects-link:hover{background:var(--brass); color:#fff;}
   #nav-scroll{display:flex; gap:18px; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;}
   #nav-scroll::-webkit-scrollbar{display:none;}
+  .headbar{gap:24px;}
+  .wordmark{flex-shrink:0; white-space:nowrap;}
+  nav{flex:1 1 auto; min-width:0; justify-content:flex-end;}
+  #nav-scroll{min-width:0;}
   @media (max-width:980px){
-    .headbar{align-items:stretch; flex-direction:column; gap:10px; padding:14px 0;}
+    .headbar{padding-top:14px; padding-bottom:14px; gap:16px;}
+    nav{gap:14px;} #nav-scroll{gap:14px;}
+    nav a{font-size:0.82rem;}
+  }
+  @media (max-width:640px){
+    .wordmark{font-size:0.98rem;}
+    nav a.projects-link{padding:5px 11px; margin-left:0;}
+  }
+  @media (max-width:900px){
+    #nav-scroll{-webkit-mask-image:linear-gradient(to right,#000 85%,transparent); mask-image:linear-gradient(to right,#000 85%,transparent); padding-right:14px;}
   }
 
   /* Hero */
-  .hero{padding:92px 0 68px;}
+  .hero{padding:92px 32px 68px;}
+  @media (max-width:640px){ .hero{padding-left:20px; padding-right:20px;} }
   .hero-greeting{font-family:var(--serif); font-weight:500; font-size:clamp(1.9rem,3.6vw,2.9rem); color:var(--ink); margin:0 0 14px; line-height:1.15;}
   .hero-greeting .accent-name{color:var(--brass-deep); font-style:italic;}
   .hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,4.6vw,3.5rem); line-height:1.12; max-width:22ch; margin:0 0 26px; letter-spacing:-0.01em;}
@@ -113,9 +128,18 @@
   .sec-body > .filler{display:none;}
   @media (min-width:640px){ .sec-body > .filler{display:block;} }
   .sec-content > p{max-width:68ch; margin:0 0 18px;}
+  .story-num{display:block; font-family:var(--mono); font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-deep); margin:0 0 4px; font-weight:500;}
   .sec-content h3{font-family:var(--serif); font-weight:500; font-size:1.15rem; margin:32px 0 10px; color:var(--ink);}
   .pull-quote{margin:30px 0 0; padding:18px 22px; border-left:3px solid var(--teal); background:var(--paper-raised); font-family:var(--serif); font-style:italic; font-size:1.05rem; color:var(--ink); max-width:64ch;}
 
+  .bring{border:1px solid var(--line); border-left:3px solid var(--sec-accent, var(--teal)); background:var(--paper-raised); padding:20px 24px 18px; margin:0 0 34px;}
+  .bring-title{font-family:var(--mono); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sec-accent, var(--teal)); margin:0 0 12px; font-weight:500;}
+  .bring ul{margin:0; padding:0; list-style:none; display:grid; gap:9px;}
+  .bring li{position:relative; padding-left:20px; font-size:0.97rem; color:var(--ink); line-height:1.5;}
+  .bring li::before{content:""; position:absolute; left:2px; top:0.62em; width:7px; height:7px; background:var(--brass); transform:rotate(45deg);}
+  .bring li b{font-weight:600;}
+  .proof-label{display:flex; align-items:center; gap:14px; font-family:var(--mono); font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 22px;}
+  .proof-label::after{content:""; flex:1; height:1px; background:var(--line);}
   .case-list{list-style:none; margin:22px 0 0; padding:0; display:grid; gap:14px;}
   .case-list li{border:1px solid var(--line); background:var(--paper-raised); padding:14px 18px; border-radius:2px; display:grid; grid-template-columns:170px 1fr; gap:14px;}
   @media (max-width:560px){ .case-list li{grid-template-columns:1fr; gap:4px;} }
@@ -279,7 +303,7 @@
   .case-body p, .case-body li{font-size:0.96rem; color:var(--ink); max-width:66ch;}
   .case-body ul{margin:6px 0 0; padding-left:20px;}
 
-  .more-heading{font-family:var(--serif); font-weight:500; font-size:1.4rem; margin:8px 0 20px;}
+  .more-heading{font-family:var(--serif); font-weight:500; font-size:1.15rem; margin:8px 0 16px;}
   .more-list{list-style:none; margin:0 0 80px; padding:0; display:grid; gap:1px; background:var(--line); border:1px solid var(--line);}
   .more-list li{background:var(--paper); padding:16px 20px; display:grid; grid-template-columns:300px 150px 1fr; gap:14px; align-items:start;}
   @media (max-width:700px){ .more-list li{grid-template-columns:1fr;} }
@@ -297,7 +321,7 @@
     <nav>
       <div id="nav-scroll">
         <a href="#value">Value Proposition</a>
-        <a href="#projects">Success Stories</a>
+        <a href="#foundations">Success Stories</a>
         <a href="#experience">Experience</a>
         <a href="#building">Current Projects</a>
         <a href="#recommendations">Recommendations</a>
@@ -309,7 +333,7 @@
 
 <section class="hero wrap" id="about">
   <div class="hero-greeting">G&rsquo;day, I'm <span class="accent-name">Sourav</span>.</div>
-  <h1>I build the analytics capabilities, teams, products and services that help companies better understand their business.</h1>
+  <h1>I build the analytics capabilities, teams, products and services that help companies understand their business better through their data.</h1>
   <p class="lede">Over twenty years across Consulting (Accenture, Capgemini), Financial Services (Westpac, Humm) and Technology (Atlassian). I have worked across the whole data chain, the end-to-end architecture from ingestion through to self-serve and automation, and I add the most value towards the right of it, where data turns into power.</p>
 </section>
 
@@ -324,22 +348,22 @@
       <a class="tile" href="#foundations" style="--tile-accent:#1F6F6F;">
         <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8 12 13 3 8 Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg></div>
         <div class="tile-title">Data &amp; Analytics Foundations</div>
-        <div class="tile-blurb">Governed metrics, the platform and team behind them, and the mandate to make them stick.</div>
+        <div class="tile-blurb">I build data and analytics foundations, products and services that allow companies to make informed decisions.</div>
       </a>
       <a class="tile" href="#models" style="--tile-accent:#A9762C;">
         <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
         <div class="tile-title">Decision Intelligence</div>
-        <div class="tile-blurb">Why revenue moved, plus the predictive models and competitive intelligence behind growth and M&amp;A calls.</div>
+        <div class="tile-blurb">I help businesses establish decision intelligence models: revenue movements and drivers, the contribution of sales, monetisation and product-led growth, churn predictive indicators and competitive intelligence.</div>
       </a>
       <a class="tile" href="#coo" style="--tile-accent:#1F6F6F;">
         <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
         <div class="tile-title">Fractional COO</div>
-        <div class="tile-blurb">Operating leadership for a startup preparing and running its capital raise.</div>
+        <div class="tile-blurb">I help seed and pre-seed companies prepare for fundraising: finding investors, pitching for funding, and shaping their strategy, vision and operating model.</div>
       </a>
       <a class="tile" href="#advisor" style="--tile-accent:#A9762C;">
         <div class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><circle cx="12" cy="10" r="3.2"/><path d="M4 8l2 1M20 8l-2 1"/></svg></div>
         <div class="tile-title">Advisor &amp; Mentor: Startups</div>
-        <div class="tile-blurb">Financial, operational and technology advice to three startups, plus angel due diligence.</div>
+        <div class="tile-blurb">I provide financial, operational and technology advice to startups, plus angel due diligence.</div>
       </a>
     </div>
   </div>
@@ -355,12 +379,25 @@
       </div>
       <div>
         <h2>Business Intelligence, Platform, Process and Governance Foundations</h2>
-        <p class="kicker">Built the business case on three numbers &mdash; productivity (one hour a week saved per analyst across roughly 300 analysts, near $1.5M a year), reusability (teams were duplicating the same definitions and SQL logic independently), and speed to insight (close to 10x faster from question asked to question answered). Took that case to my own manager first, stress-tested the harder, less certain cost side with him, and only then approached the five department heads and two platform-adjacent teams whose people and participation the plan actually needed.</p>
+        <p class="kicker">The platform, governance and people foundations that turn data into numbers a business trusts and acts on.</p>
       </div>
     </div>
     <div class="sec-body">
       <div class="filler"></div>
       <div class="sec-content">
+        <div class="bring" style="--sec-accent:#1F6F6F;">
+          <div class="bring-title">What I bring</div>
+          <ul>
+            <li><b>The business case for BI investment</b>, built on measurable productivity, reuse and trust rather than vanity metrics.</li>
+            <li><b>Metric governance</b>: one definition per metric, a named owner and a certification process the business adopts.</li>
+            <li><b>BI platform and internal tooling</b>, including governance products such as a metrics dictionary.</li>
+            <li><b>A BI Centre of Excellence</b>: the operating model, standards and community that make best practice repeatable.</li>
+            <li><b>Data literacy</b> through coaching in visualisation, storytelling with data and self-service analytics.</li>
+          </ul>
+        </div>
+        <div class="proof-label">Where I&rsquo;ve done it</div>
+        <h3><span class="story-num">Success Story #1</span>A business case for BI strategy</h3>
+        <p>Built the business case on three numbers &mdash; productivity (one hour a week saved per analyst across roughly 300 analysts, near $1.5M a year), reusability (teams were duplicating the same definitions and SQL logic independently), and speed to insight (close to 10x faster from question asked to question answered). Took that case to my own manager first, stress-tested the harder, less certain cost side with him, and only then approached the five department heads and two platform-adjacent teams whose people and participation the plan actually needed.</p>
         <p>The investment case rests on three numbers, each tied to a distinct goal rather than a vanity metric:</p>
         <div class="stat-row">
           <div class="stat-cell">
@@ -379,7 +416,7 @@
             <div class="goal"><b>Goal</b> &mdash; drive adoption through training, education and embedded BI practice.</div>
           </div>
         </div>
-        <h3>One definition, one number, owned by name</h3>
+        <h3><span class="story-num">Success Story #2</span>One definition, one number, owned by name</h3>
         <p>Getting the platform right still leaves a governance problem: whose definition of a metric is the real one. This was cross-functional work, run with the departments that owned the metrics, with a named owner in each team for each definition and segment. It took roughly a year to get through the full set.</p>
         <div class="timeline">
           <div class="tl-item"><div class="tl-head">Agree the definitions</div><div class="tl-body">Metric by metric, segment by segment, worked through with the owning department until there was one accepted definition &mdash; not a data-team version and a finance version.</div></div>
@@ -387,12 +424,12 @@
           <div class="tl-item"><div class="tl-head">Embed it in reporting</div><div class="tl-body">Reports across departments converged on the same number for the same metric &mdash; the test of whether the governance had actually taken.</div></div>
           <div class="tl-item"><div class="tl-head">Compound the payoff</div><div class="tl-body">Consistent segmentation turned out to matter most in experimentation &mdash; A/B tests read the same segment the same way everywhere, so results were comparable across teams for the first time.</div></div>
         </div>
-        <h3>Build internal governance tools</h3>
+        <h3><span class="story-num">Success Story #3</span>Build internal governance tools</h3>
         <p>With Platform Engineering, I designed and built a React.js-based metrics dictionary that became the single reference for every definition, used for both reporting and experimentation.</p>
-        <h3>Coaching for data literacy</h3>
+        <h3><span class="story-num">Success Story #4</span>Coaching for data literacy</h3>
         <p>Alongside the governance work, ran hands-on coaching across visualisation practice, storytelling with data and self-service analytics &mdash; the standard was a team member who could turn a shared number into a decision unassisted, not just retrieve it.</p>
         <p class="pull-quote">&ldquo;Early on, the question in every leadership review was which number is correct. Eighteen months in, that question had essentially disappeared &mdash; the conversation had moved to how do we tell this story better.&rdquo;</p>
-        <h3>Centre of Excellence</h3>
+        <h3><span class="story-num">Success Story #5</span>Centre of Excellence</h3>
         <p>Before the <b>Business Intelligence Centre of Excellence</b> existed, best practice across analytics, BI and data engineering lived entirely in individual people's heads &mdash; no shared standard, so it left whenever they did. Built the team through lateral hires, contractor hires and internal staff moves, against one hiring bar: someone who could sit with a stakeholder directly and design and build their own solution, not wait for a spec.</p>
         <div class="diagram-frame">
           <div class="ci-title" style="padding:0 8px;">Business Intelligence Centre of Excellence Framework</div>
@@ -501,7 +538,17 @@
     <div class="sec-body">
       <div class="filler"></div>
       <div class="sec-content">
-        <h3>Customer lifetime value, by product</h3>
+        <div class="bring" style="--sec-accent:#A9762C;">
+          <div class="bring-title">What I bring</div>
+          <ul>
+            <li><b>Revenue decomposition</b> that shows which lever moved: sales, monetisation or product-led growth, and by how much.</li>
+            <li><b>Predictive models</b> for customer lifetime value and churn indicators, so investment follows future value.</li>
+            <li><b>Competitive and ecosystem intelligence</b> that informs growth strategy and M&amp;A.</li>
+            <li><b>Decision-ready insight</b>: models and narratives leaders act on, not just reports.</li>
+          </ul>
+        </div>
+        <div class="proof-label">Where I&rsquo;ve done it</div>
+        <h3><span class="story-num">Success Story #6</span>Customer lifetime value, by product</h3>
         <p>Built a set of gradient boosting regressor models to predict customer lifetime value, split by product line rather than one model for everything: three core products shared a model, since their usage patterns generalised, while each of the other products needed its own. Features spanned product usage, account usage, the trend of both over time, pricing tier and firmographics, plus expansion and contraction signal. The main use case was paid search: feeding predicted lifetime value back into bid optimisation, rather than buying acquisition on last-click conversion alone.</p>
         <div class="diagram-frame" style="margin-top:24px;">
           <svg viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="clvTitle clvDesc">
@@ -582,7 +629,7 @@
             </svg>
           <div class="diagram-caption">Six feature groups feed gradient boosting regressors split by product line. Predicted lifetime value per account then sets how much each paid search click is worth.</div>
         </div>
-        <h3>Ecosystem intelligence, for Corporate Development</h3>
+        <h3><span class="story-num">Success Story #7</span>Ecosystem intelligence, for Corporate Development</h3>
         <p>Ran a competitive intelligence capability covering sentiment, funding, financials, product reviews, page clicks, app downloads and social presence. The more distinctive signal was tracking the company's own product links being pasted into other tools inside a customer's ecosystem: a proxy for which other apps were actually live there, and how that adoption trended over time. That "ecosystem intelligence" became a quarterly report to the CEO, with Corporate Development as the standing stakeholder: it surfaced candidate companies through share-of-mind trends, and when the CEO wanted a specific read on a competitor's growth, strategy or funding, the same dataset had enough depth to answer it directly, supporting acquisition targeting up to $500M.</p>
         <div class="ci-frame">
           <div class="ci-title">Competitive intelligence metrics</div>
@@ -646,7 +693,7 @@
             <div class="ci-sources">Sources: <a href="https://www.similarweb.com/blog/investor/asset-research/what-is-alternative-data/">Similarweb</a> &middot; <a href="https://pitchbook.com/help/understanding-vc-exit-predictor">PitchBook</a> &middot; <a href="https://about.crunchbase.com/guide/predictive-intelligence">Crunchbase</a></div>
           </div>
         </div>
-        <h3>Commercial &amp; business performance insights</h3>
+        <h3><span class="story-num">Success Story #8</span>Commercial &amp; business performance insights</h3>
         <p>Most teams can tell leadership that ARR beat or missed forecast. I build the models that show exactly which lever moved, by how much, and what to do about it &mdash; down to the seat, the segment and the driver.</p>
         <p>The starting point is always the same question: what actually happened to revenue this period, and why. That means decomposing closing ARR back to its seat-level drivers &mdash; new logos landed, cross-sell, expansion, contraction, reactivation and churn &mdash; and pricing it correctly across the tiers that carry the business. Below is the bridge I use to hold that decomposition together, distinguishing sales-led motion from product-led motion.</p>
 
@@ -749,6 +796,17 @@
     <div class="sec-body">
       <div class="filler"></div>
       <div class="sec-content">
+        <div class="bring" style="--sec-accent:#1F6F6F;">
+          <div class="bring-title">What I bring</div>
+          <ul>
+            <li><b>Fundraising readiness</b> for seed and pre-seed companies: investor-ready numbers and a diligence pack that holds up.</li>
+            <li><b>Finding investors</b> and building the pipeline for the round.</li>
+            <li><b>Pitching for funding</b>: the story, the deck and the numbers behind it.</li>
+            <li><b>Strategy, vision and operating model</b> that a funded company can scale on.</li>
+          </ul>
+        </div>
+        <div class="proof-label">Where I&rsquo;ve done it</div>
+        <h3><span class="story-num">Success Story #9</span>Fractional COO for a startup raising funds</h3>
         <p>I am working as a Fractional COO with a startup that is raising funds. The work draws on the same habits as the rest of this page: numbers that stand up to scrutiny, a story investors can follow, and the governance to hold it together.</p>
         <ul class="case-list">
           <li><span class="label">Investor-ready numbers</span><span class="desc">Financial and scenario modelling of the kind built for the UCLA capstone market-entry plan: revenue projections, NPV, IRR and breakeven, stress-tested before anyone outside sees them.</span></li>
@@ -776,13 +834,19 @@
     <div class="sec-body">
       <div class="filler"></div>
       <div class="sec-content">
+        <div class="bring" style="--sec-accent:#A9762C;">
+          <div class="bring-title">What I bring</div>
+          <ul>
+            <li><b>Financial</b>: financial models, unit economics and scenario planning that stand up to investor scrutiny, and the reporting a board will expect once the round closes.</li>
+            <li><b>Operational</b>: the operating rhythm, KPIs and decision rights a growing team needs to scale without losing control of the business.</li>
+            <li><b>Technological</b>: data, analytics and AI architecture choices sized to the stage of the company, so early decisions do not turn into expensive rework later.</li>
+            <li><b>Investor due diligence</b>: assessing market, financials, team and technology for the Sydney Angels syndicate before it commits capital.</li>
+          </ul>
+        </div>
+        <div class="proof-label">Where I&rsquo;ve done it</div>
+        <h3><span class="story-num">Success Story #10</span>Advising startups, and angel due diligence</h3>
         <p>I currently advise three startups. I am also an angel investor with Sydney Angels, where I carry out due diligence as part of the syndicate. Sitting on both sides of the table shapes the advice: I know what founders are trying to build, and what investors will test before they back it.</p>
-        <ul class="case-list">
-          <li><span class="label">Financial</span><span class="desc">Financial models, unit economics and scenario planning that stand up to investor scrutiny, and the reporting a board will expect once the round closes.</span></li>
-          <li><span class="label">Operational</span><span class="desc">The operating rhythm, KPIs and decision rights a growing team needs to scale without losing control of the business.</span></li>
-          <li><span class="label">Technological</span><span class="desc">Data, analytics and AI architecture choices sized to the stage of the company, so early decisions do not turn into expensive rework later.</span></li>
-          <li><span class="label">Investor due diligence</span><span class="desc">Assessing market, financials, team and technology for the Sydney Angels syndicate before it commits capital.</span></li>
-        </ul>
+
       </div>
     </div>
   </div>
@@ -792,37 +856,11 @@
 <section class="block" id="projects">
   <div class="wrap">
     <div class="block-head">
-      <h2>Success Stories</h2>
-      <p>Nine engagements, each laid out as Situation, Task, Action and Result, spanning technology, government, insurance, energy and financial services, from $150K coaching programs to a $900M business transformation. A further eight engagements are listed underneath in brief.</p>
+      <h2>Other Success Stories</h2>
+      <p>Eight engagements, each laid out as Situation, Task, Action and Result, spanning government, industrials, insurance, energy and financial services, from $150K coaching programs to a $900M business transformation. A further eight engagements are listed underneath in brief.</p>
     </div>
 <div class="case-grid">
 
-  <details class="case">
-    <summary class="case-head">
-      <div>
-        <div class="case-title">A global SaaS technology company — BI Centre of Excellence &amp; Enterprise Reporting</div>
-        <div class="case-meta">Technology, Sydney, 2017–2021 and 2022–2025</div>
-        <div class="case-ask">Build board-grade commercial reporting and a scalable BI function from a standing start, for a $5.2B ARR business.</div>
-      </div>
-      <div class="case-value">$1.5M+ impact</div>
-      <div class="case-chevron">&#9662;</div>
-    </summary>
-    <div class="case-body">
-      <h4>Situation</h4>
-      <p>No shared definitions or governance existed across analytics teams — product, marketing, sales and finance each ran their own, and leadership regularly saw conflicting numbers for the same metric in the same meeting.</p>
-      <h4>Task</h4>
-      <p>Build board-grade commercial reporting and a scalable BI function from a standing start, for a $5.2B ARR business.</p>
-      <h4>Action</h4>
-      <ul>
-        <li>Built the BI Centre of Excellence on a hub-and-spoke operating model: analysts stayed embedded in their departments, coordinated through a shared hub.</li>
-        <li>Established governance, self-serve tooling and consistent visualisation standards across the organisation.</li>
-        <li>Owned reporting on the company's key metrics — ACV, ARR, PEU, Paid Seats, MAU and Customers.</li>
-        <li>Delivered commercial insight to the CEO and Exec Ops on $10M+ variances in monthly business reviews and long-range planning.</li>
-      </ul>
-      <h4>Result</h4>
-      <p>$1.5M+ measurable impact from the Centre of Excellence; 20% YoY growth tracked and explained across a $5.2B revenue base; a 15–18% productivity improvement from partnering with People and Finance on workforce distribution.</p>
-    </div>
-  </details>
 
   <details class="case">
     <summary class="case-head">
